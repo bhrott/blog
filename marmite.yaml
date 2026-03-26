@@ -25,8 +25,8 @@ templates_path: templates
 static_path: static
 media_path: media
 card_image: 'media/img/og-banner.jpg'
-banner_image: 'media/img/og-banner.jpg'
-logo_image: 'media/img/logo.png'
+banner_image: ''
+logo_image: ''
 default_date_format: '%b %e, %Y'
 menu:
 - - Tags
