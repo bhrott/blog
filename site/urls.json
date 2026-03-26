@@ -1,5 +1,6 @@
 {
   "posts": [
+    "/marmite.html",
     "/notebooklm.html"
   ],
   "pages": [
@@ -7,13 +8,19 @@
     "/pages.html"
   ],
   "tags": [
-    "/tag-security.html",
-    "/tag-ai.html",
-    "/tag-agent.html",
+    "/tag-tool.html",
     "/tag-notebooklm.html",
+    "/tag-agent.html",
+    "/tag-ai.html",
+    "/tag-security.html",
+    "/tag-blog.html",
+    "/tag-open-source.html",
     "/tags.html"
   ],
-  "authors": [],
+  "authors": [
+    "/author-ben-hur.html",
+    "/authors.html"
+  ],
   "series": [],
   "streams": [
     "/streams.html"
@@ -24,18 +31,26 @@
   ],
   "feeds": [
     "/index.rss",
-    "/tag-security.rss",
-    "/tag-ai.rss",
-    "/tag-agent.rss",
+    "/tag-tool.rss",
     "/tag-notebooklm.rss",
+    "/tag-agent.rss",
+    "/tag-ai.rss",
+    "/tag-security.rss",
+    "/tag-blog.rss",
+    "/tag-open-source.rss",
+    "/author-ben-hur.rss",
     "/archive-2026.rss"
   ],
   "pagination": [
     "/pages-1.html",
-    "/tag-security-1.html",
-    "/tag-ai-1.html",
-    "/tag-agent-1.html",
+    "/tag-tool-1.html",
     "/tag-notebooklm-1.html",
+    "/tag-agent-1.html",
+    "/tag-ai-1.html",
+    "/tag-security-1.html",
+    "/tag-blog-1.html",
+    "/tag-open-source-1.html",
+    "/author-ben-hur-1.html",
     "/archive-2026-1.html"
   ],
   "file_mappings": [],
@@ -43,18 +58,18 @@
     "/index.html"
   ],
   "summary": {
-    "posts": 1,
+    "posts": 2,
     "pages": 2,
-    "tags": 5,
-    "authors": 0,
+    "tags": 8,
+    "authors": 2,
     "series": 0,
     "streams": 1,
     "archives": 2,
-    "feeds": 6,
-    "pagination": 6,
+    "feeds": 10,
+    "pagination": 10,
     "file_mappings": 0,
     "misc": 1,
-    "total": 24,
+    "total": 38,
     "meta": {
       "url": "",
       "absolute_urls": false

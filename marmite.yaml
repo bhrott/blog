@@ -37,7 +37,19 @@ menu:
   - authors.html
 extra:
   colorscheme: default
-authors: {}
+authors:
+  ben-hur:
+    name: "Ben-Hur Santos Ott"
+    avatar: "media/img/author_ben-hur.png"
+    bio: "Just a guy that loves development, security and AI automation."
+    links:
+      - ["website", "https://benhurott.com"]
+      - ["linkedin", "https://www.linkedin.com/in/benhurott/"]
+      - ["youtube", "https://www.youtube.com/@benhurott"]
+      - ["wss podcast", "https://www.youtube.com/@wsssecurity"]
+      - ["devsecops podcast", "https://devsecopspodcast.com.br"]
+      - ["x/twitter", "https://x.com/bhrott"]
+      - ["alura - appsec", "https://www.alura.com.br/carreiras/appsec?srsltid=AfmBOorcgOED3hDXxjxQw-6YEyNJQ2iskvVtHY-7LBSMFhi5LUuBt-Wj"]
 streams: {}
 series: {}
 toc: true

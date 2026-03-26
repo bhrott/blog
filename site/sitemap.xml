@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/marmite.html</loc>
+  </url>
+  <url>
     <loc>/notebooklm.html</loc>
   </url>
   <url>
@@ -10,19 +13,34 @@
     <loc>/pages.html</loc>
   </url>
   <url>
-    <loc>/tag-security.html</loc>
-  </url>
-  <url>
-    <loc>/tag-ai.html</loc>
-  </url>
-  <url>
-    <loc>/tag-agent.html</loc>
+    <loc>/tag-tool.html</loc>
   </url>
   <url>
     <loc>/tag-notebooklm.html</loc>
   </url>
   <url>
+    <loc>/tag-agent.html</loc>
+  </url>
+  <url>
+    <loc>/tag-ai.html</loc>
+  </url>
+  <url>
+    <loc>/tag-security.html</loc>
+  </url>
+  <url>
+    <loc>/tag-blog.html</loc>
+  </url>
+  <url>
+    <loc>/tag-open-source.html</loc>
+  </url>
+  <url>
     <loc>/tags.html</loc>
+  </url>
+  <url>
+    <loc>/author-ben-hur.html</loc>
+  </url>
+  <url>
+    <loc>/authors.html</loc>
   </url>
   <url>
     <loc>/streams.html</loc>
@@ -37,16 +55,28 @@
     <loc>/index.rss</loc>
   </url>
   <url>
-    <loc>/tag-security.rss</loc>
+    <loc>/tag-tool.rss</loc>
   </url>
   <url>
-    <loc>/tag-ai.rss</loc>
+    <loc>/tag-notebooklm.rss</loc>
   </url>
   <url>
     <loc>/tag-agent.rss</loc>
   </url>
   <url>
-    <loc>/tag-notebooklm.rss</loc>
+    <loc>/tag-ai.rss</loc>
+  </url>
+  <url>
+    <loc>/tag-security.rss</loc>
+  </url>
+  <url>
+    <loc>/tag-blog.rss</loc>
+  </url>
+  <url>
+    <loc>/tag-open-source.rss</loc>
+  </url>
+  <url>
+    <loc>/author-ben-hur.rss</loc>
   </url>
   <url>
     <loc>/archive-2026.rss</loc>
@@ -55,16 +85,28 @@
     <loc>/pages-1.html</loc>
   </url>
   <url>
-    <loc>/tag-security-1.html</loc>
+    <loc>/tag-tool-1.html</loc>
   </url>
   <url>
-    <loc>/tag-ai-1.html</loc>
+    <loc>/tag-notebooklm-1.html</loc>
   </url>
   <url>
     <loc>/tag-agent-1.html</loc>
   </url>
   <url>
-    <loc>/tag-notebooklm-1.html</loc>
+    <loc>/tag-ai-1.html</loc>
+  </url>
+  <url>
+    <loc>/tag-security-1.html</loc>
+  </url>
+  <url>
+    <loc>/tag-blog-1.html</loc>
+  </url>
+  <url>
+    <loc>/tag-open-source-1.html</loc>
+  </url>
+  <url>
+    <loc>/author-ben-hur-1.html</loc>
   </url>
   <url>
     <loc>/archive-2026-1.html</loc>

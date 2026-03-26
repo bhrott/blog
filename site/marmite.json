@@ -1,10 +1,10 @@
 {
   "marmite_version": "0.2.7",
-  "posts": 1,
+  "posts": 2,
   "pages": 1,
-  "generated_at": "2026-03-25 23:33:31.468929 -03:00",
-  "timestamp": 1774492411,
-  "elapsed_time": 0.030837375,
+  "generated_at": "2026-03-26 00:08:35.699017 -03:00",
+  "timestamp": 1774494515,
+  "elapsed_time": 0.040488667,
   "config": {
     "name": "Ben-Hur Santos Ott",
     "tagline": "AI Agents Security | AppSec | DevSecOps",
@@ -53,7 +53,43 @@
     "extra": {
       "colorscheme": "default"
     },
-    "authors": {},
+    "authors": {
+      "ben-hur": {
+        "name": "Ben-Hur Santos Ott",
+        "avatar": "media/img/author_ben-hur.png",
+        "bio": "Just a guy that loves development, security and AI automation.",
+        "links": [
+          [
+            "website",
+            "https://benhurott.com"
+          ],
+          [
+            "linkedin",
+            "https://www.linkedin.com/in/benhurott/"
+          ],
+          [
+            "youtube",
+            "https://www.youtube.com/@benhurott"
+          ],
+          [
+            "wss podcast",
+            "https://www.youtube.com/@wsssecurity"
+          ],
+          [
+            "devsecops podcast",
+            "https://devsecopspodcast.com.br"
+          ],
+          [
+            "x/twitter",
+            "https://x.com/bhrott"
+          ],
+          [
+            "alura - appsec",
+            "https://www.alura.com.br/carreiras/appsec?srsltid=AfmBOorcgOED3hDXxjxQw-6YEyNJQ2iskvVtHY-7LBSMFhi5LUuBt-Wj"
+          ]
+        ]
+      }
+    },
     "streams": {},
     "series": {},
     "toc": true,
