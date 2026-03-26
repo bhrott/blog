@@ -1,0 +1,63 @@
+{
+  "posts": [
+    "/notebooklm.html"
+  ],
+  "pages": [
+    "/about.html",
+    "/pages.html"
+  ],
+  "tags": [
+    "/tag-security.html",
+    "/tag-ai.html",
+    "/tag-agent.html",
+    "/tag-notebooklm.html",
+    "/tags.html"
+  ],
+  "authors": [],
+  "series": [],
+  "streams": [
+    "/streams.html"
+  ],
+  "archives": [
+    "/archive-2026.html",
+    "/archive.html"
+  ],
+  "feeds": [
+    "/index.rss",
+    "/tag-security.rss",
+    "/tag-ai.rss",
+    "/tag-agent.rss",
+    "/tag-notebooklm.rss",
+    "/archive-2026.rss"
+  ],
+  "pagination": [
+    "/pages-1.html",
+    "/tag-security-1.html",
+    "/tag-ai-1.html",
+    "/tag-agent-1.html",
+    "/tag-notebooklm-1.html",
+    "/archive-2026-1.html"
+  ],
+  "file_mappings": [],
+  "misc": [
+    "/index.html"
+  ],
+  "summary": {
+    "posts": 1,
+    "pages": 2,
+    "tags": 5,
+    "authors": 0,
+    "series": 0,
+    "streams": 1,
+    "archives": 2,
+    "feeds": 6,
+    "pagination": 6,
+    "file_mappings": 0,
+    "misc": 1,
+    "total": 24,
+    "meta": {
+      "url": "",
+      "absolute_urls": false
+    }
+  }
+}

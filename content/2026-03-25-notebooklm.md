@@ -1,0 +1,14 @@
+---
+date: 2026-03-25 21:00
+tags:
+    - notebooklm
+    - agent
+    - ai
+    - security
+    
+---
+
+# Agent Security NotebookLM
+
+I created a [NotebookLM](https://notebooklm.google.com/notebook/70a665ec-db47-45d3-9fb5-c76b1f3af4b2) with all sources that I'm reviewing about security for AI Agents.
+

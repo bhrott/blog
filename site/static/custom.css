@@ -1,0 +1,10 @@
+/* Custom CSS */
+:root {
+  --pico-primary: #00A66E;
+  /* --pico-primary-border: #00895A;
+  --pico-primary-background: #00895A; */
+}
+
+.hamburger {
+    color: #00895A;
+}
