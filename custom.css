@@ -10,3 +10,9 @@
 .author-hero-links a {
     color: #777777;
 }
+
+.youtube-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto; /* Overrides fixed height if necessary */
+}
