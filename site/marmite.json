@@ -1,10 +1,10 @@
 {
   "marmite_version": "0.2.7",
-  "posts": 2,
+  "posts": 3,
   "pages": 1,
-  "generated_at": "2026-03-26 00:08:35.699017 -03:00",
-  "timestamp": 1774494515,
-  "elapsed_time": 0.040488667,
+  "generated_at": "2026-03-26 01:08:32.631888 -03:00",
+  "timestamp": 1774498112,
+  "elapsed_time": 0.055605166,
   "config": {
     "name": "Ben-Hur Santos Ott",
     "tagline": "AI Agents Security | AppSec | DevSecOps",
@@ -22,7 +22,7 @@
     "streams_content_title": "Posts from '$stream'",
     "series_title": "Series",
     "series_content_title": "Posts from '$series' series",
-    "default_author": "",
+    "default_author": "ben-hur",
     "authors_title": "Authors",
     "enable_search": true,
     "enable_related_content": false,
@@ -48,10 +48,14 @@
       [
         "Authors",
         "authors.html"
+      ],
+      [
+        "RSS",
+        "index.rss"
       ]
     ],
     "extra": {
-      "colorscheme": "default"
+      "colorscheme": "dark"
     },
     "authors": {
       "ben-hur": {

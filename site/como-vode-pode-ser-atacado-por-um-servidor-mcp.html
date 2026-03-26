@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/static/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <meta name="generator" content="Marmite" />
+    
+<meta property="og:title" content="How you can be attacked by an MCP Server">
+
+<meta property="og:description" content="
+A live session by José Augusto talking about MCP security
+
+
+">
+
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ben-Hur Santos Ott">
+
+<meta property="article:published_time" content=" 2026-03-26T00:51:00+00:00">
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/como-vode-pode-ser-atacado-por-um-servidor-mcp.html"
+    },
+    "url": "/como-vode-pode-ser-atacado-por-um-servidor-mcp.html",
+    "headline": "How you can be attacked by an MCP Server",
+    "description": "A live session by José Augusto talking about MCP security
+
+
+",
+    
+    "author": {
+        "@type": "Person",
+        "name": "Ben-Hur Santos Ott",
+        "url": "/author-ben-hur.html",
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ben-Hur Santos Ott",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/"
+        }
+    },
+    "datePublished": "2026-03-26T00:51:00+00:00"
+}
+</script>
+
+
+    <title>How you can be attacked by an MCP Server | Ben-Hur Santos Ott</title>
+    <link rel="stylesheet" type="text/css" href="/static/pico.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/marmite.css">
+    
+    <link rel="stylesheet" type="text/css" href="/static/colorschemes/dark.css">
+    
+    <link rel="stylesheet" type="text/css" href="/static/custom.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github.min.css" id="highlightjs-theme" />
+
+
+
+        <link rel="alternate" type="application/rss+xml" title="index" href="/index.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: tool" href="/tag-tool.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: mcp" href="/tag-mcp.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: ai" href="/tag-ai.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: video" href="/tag-video.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: open-source" href="/tag-open-source.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: test" href="/tag-test.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: blog" href="/tag-blog.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: notebooklm" href="/tag-notebooklm.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: security" href="/tag-security.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: agent" href="/tag-agent.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: post" href="/tag-post.rss">
+    <link rel="alternate" type="application/rss+xml" title="tag: offensive" href="/tag-offensive.rss">
+    <link rel="alternate" type="application/rss+xml" title="author: ben-hur" href="/author-ben-hur.rss">
+    <link rel="alternate" type="application/rss+xml" title="year: 2026" href="/archive-2026.rss">
+    
+
+    
+
+    
+    
+</head>
+<body>
+    
+    <div class="container-fluid announcement-wrapper">
+        <div class="announcement"><p>Give us a ☆ on <a href="https://github.com/rochacbruno/marmite">github</a></p>
+</div>
+    </div>
+    
+    <main class="container">
+        
+        <header class="header-content">
+            <nav class="header-nav">
+                <ul class="header-name">
+                    <li>
+                        <hgroup class="h-card">
+                            <h2>
+                                <a href="/" class="contrast p-name u-url">
+                                    
+                                        Ben-Hur Santos Ott
+                                    
+                                </a>
+                            </h2>
+                             <p class="p-note">AI Agents Security | AppSec | DevSecOps</p> 
+                        </hgroup>
+                    </li>
+                </ul>
+                <button id="menu-toggle" class="hamburger">&#9776;</button>
+
+                <ul class="header-menu" id="header-menu">
+                    
+                      
+                      
+                    <li>
+                        
+                        <a class="menu-item secondary"  href="/tags.html">Tags</a>
+                        
+                    </li>
+                    
+                      
+                      
+                    <li>
+                        
+                        <a class="menu-item secondary"  href="/archive.html">Archive</a>
+                        
+                    </li>
+                    
+                      
+                      
+                    <li>
+                        
+                        <a class="menu-item secondary"  href="/authors.html">Authors</a>
+                        
+                    </li>
+                    
+                      
+                      
+                    <li>
+                        
+                        <a class="menu-item secondary"  href="/index.rss">RSS</a>
+                        
+                    </li>
+                    
+                    
+                    
+                    <li><a href="#" id="search-toggle" class="secondary" title="Search (Ctrl + Shift + F)"> <span class="search-txt">Search</span><span class="search-magnifier"></span></a></li>
+                    
+                    <div class="underline"></div>
+                </ul>
+            </nav>
+            
+            <div class="marmite-background-overlay" id="overlay-close"></div>
+            <div class="marmite-search-bar hidden">
+                <span></span>
+                <button class="marmite-close-button" id="search-close">X</button>
+                <input placeholder="Search" id="marmite-search-input" />
+                <div class="marmite-search-bar-result">
+                    <ul id="marmite-search-bar-result"></ul>
+                </div>
+            </div>
+            
+        </header>
+        
+        <section class="main-content">
+            
+
+
+
+<article class="h-entry">
+  <data class="p-name" value="How you can be attacked by an MCP Server"></data>
+  <a class="u-url" href="/como-vode-pode-ser-atacado-por-um-servidor-mcp.html" style="display: none;"></a>
+  
+  <time class="dt-published" datetime="2026-03-26T00:51:00+00:00" style="display: none;">Mar 26, 2026</time>
+  
+
+  
+
+  
+
+
+<div class="content-title" id="title">
+    <h1>How you can be attacked by an MCP Server</h1> 
+    
+
+
+<span class="content-date">
+    <small> Mar 26, 2026 - &#10710; 1 min</small>
+</span>
+
+</div>
+
+  
+  
+
+  <div class="content-html e-content"><!-- Content Injected to every content markdown header -->
+<p>A live session by José Augusto talking about MCP security</p>
+
+
+
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/rpEZ-Mzuq1M" title="" frameBorder="0" allow="accelerometer;" allowFullScreen></iframe></p>
+
+<!-- Content Injected to every content markdown footer -->
+</div>
+  
+  <footer class="data-tags-footer">
+
+    <div class="content-authors-flex">
+      <div class="content-authors-full">
+        
+<div class="content-authors">
+    <ul>
+        
+            
+            
+            <li class="h-card p-author">
+                
+                
+                <a href="/author-ben-hur.html" class="u-url">
+                    <img src="/media/img/author_ben-hur.png" alt="Ben-Hur Santos Ott" class="avatar u-photo">
+                    <span class="p-name">Ben-Hur Santos Ott</span>
+                </a>
+            </li>
+            
+        
+    </ul>
+</div>
+
+
+      </div>
+
+      <div class="date-tags-container">
+        <div class="content-date">
+          
+
+
+<span class="content-date">
+    <small> Mar 26, 2026 - &#10710; 1 min</small>
+</span>
+
+          
+        </div>
+
+        <ul class="content-tags">
+          
+          
+          
+          <li><a href="/tag-video.html" class="p-category">video</a></li>
+          
+          
+          
+          <li><a href="/tag-mcp.html" class="p-category">mcp</a></li>
+          
+          
+          
+          <li><a href="/tag-offensive.html" class="p-category">offensive</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+</article>
+
+
+
+
+<article>
+  <nav style="display: flex; justify-content: space-between;">
+    <div>
+      <a href="/test-blog-post.html">← Test of blogpost</a>
+    </div>
+    <div>
+      
+    </div>
+  </nav>
+</article>
+
+
+
+
+
+
+
+
+        </section>
+        
+        <footer class="footer-content grid">
+            <div>Powered by <a href="https://github.com/rochacbruno/marmite">Marmite</a> | <small><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY_NC-SA</a></small></div>
+            
+        </footer>
+        
+    </main>
+
+    <script src="/static/marmite.js"></script>
+    <script src="/static/custom.js"></script>
+    
+    <script type="module" src="/static/search.js"></script>
+    
+    
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+
+</body>
+</html>

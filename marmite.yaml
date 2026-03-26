@@ -14,7 +14,7 @@ streams_title: Streams
 streams_content_title: Posts from '$stream'
 series_title: Series
 series_content_title: Posts from '$series' series
-default_author: ''
+default_author: 'ben-hur'
 authors_title: Authors
 enable_search: true
 enable_related_content: false
@@ -35,8 +35,10 @@ menu:
   - archive.html
 - - Authors
   - authors.html
+- - RSS
+  - index.rss
 extra:
-  colorscheme: default
+  colorscheme: dark
 authors:
   ben-hur:
     name: "Ben-Hur Santos Ott"

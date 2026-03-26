@@ -1,5 +1,6 @@
 {
   "posts": [
+    "/how-you-can-be-attacked-by-mcp.html",
     "/marmite.html",
     "/notebooklm.html"
   ],
@@ -10,10 +11,13 @@
   "tags": [
     "/tag-tool.html",
     "/tag-notebooklm.html",
+    "/tag-security.html",
     "/tag-agent.html",
     "/tag-ai.html",
-    "/tag-security.html",
+    "/tag-offensive.html",
+    "/tag-mcp.html",
     "/tag-blog.html",
+    "/tag-video.html",
     "/tag-open-source.html",
     "/tags.html"
   ],
@@ -33,10 +37,13 @@
     "/index.rss",
     "/tag-tool.rss",
     "/tag-notebooklm.rss",
+    "/tag-security.rss",
     "/tag-agent.rss",
     "/tag-ai.rss",
-    "/tag-security.rss",
+    "/tag-offensive.rss",
+    "/tag-mcp.rss",
     "/tag-blog.rss",
+    "/tag-video.rss",
     "/tag-open-source.rss",
     "/author-ben-hur.rss",
     "/archive-2026.rss"
@@ -45,10 +52,13 @@
     "/pages-1.html",
     "/tag-tool-1.html",
     "/tag-notebooklm-1.html",
+    "/tag-security-1.html",
     "/tag-agent-1.html",
     "/tag-ai-1.html",
-    "/tag-security-1.html",
+    "/tag-offensive-1.html",
+    "/tag-mcp-1.html",
     "/tag-blog-1.html",
+    "/tag-video-1.html",
     "/tag-open-source-1.html",
     "/author-ben-hur-1.html",
     "/archive-2026-1.html"
@@ -58,18 +68,18 @@
     "/index.html"
   ],
   "summary": {
-    "posts": 2,
+    "posts": 3,
     "pages": 2,
-    "tags": 8,
+    "tags": 11,
     "authors": 2,
     "series": 0,
     "streams": 1,
     "archives": 2,
-    "feeds": 10,
-    "pagination": 10,
+    "feeds": 13,
+    "pagination": 13,
     "file_mappings": 0,
     "misc": 1,
-    "total": 38,
+    "total": 48,
     "meta": {
       "url": "",
       "absolute_urls": false
