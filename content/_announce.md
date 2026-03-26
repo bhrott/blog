@@ -1,1 +1,1 @@
-Give us a &star; on [github]
+Give us a &star; on [github](https://github.com/bhrott/blog)
