@@ -1,18 +1,19 @@
 /* Custom CSS */
 :root {
-  --pico-primary: #00A66E;
+  --pico-primary: #A780D4;
 }
 
 .hamburger {
-    color: #00895A;
+  color: #00895A;
 }
 
 .author-hero-links a {
-    color: #777777;
+  color: #777777;
 }
 
 .youtube-video {
   width: 100%;
   aspect-ratio: 16 / 9;
-  height: auto; /* Overrides fixed height if necessary */
+  height: auto;
+  /* Overrides fixed height if necessary */
 }

@@ -1,88 +1,109 @@
 {
   "posts": [
-    "/how-you-can-be-attacked-by-mcp.html",
-    "/marmite.html",
-    "/notebooklm.html"
+    "https://benhurott.com/ai-security-institute.html",
+    "https://benhurott.com/learn-from-incidents.html",
+    "https://benhurott.com/litellm-supply-chain.html",
+    "https://benhurott.com/how-you-can-be-attacked-by-mcp.html",
+    "https://benhurott.com/marmite.html",
+    "https://benhurott.com/notebooklm.html"
   ],
   "pages": [
-    "/about.html",
-    "/pages.html"
+    "https://benhurott.com/about.html",
+    "https://benhurott.com/pages.html"
   ],
   "tags": [
-    "/tag-offensive.html",
-    "/tag-notebooklm.html",
-    "/tag-open-source.html",
-    "/tag-tool.html",
-    "/tag-blog.html",
-    "/tag-agent.html",
-    "/tag-video.html",
-    "/tag-mcp.html",
-    "/tag-security.html",
-    "/tag-ai.html",
-    "/tags.html"
+    "https://benhurott.com/tag-agent.html",
+    "https://benhurott.com/tag-ai.html",
+    "https://benhurott.com/tag-security.html",
+    "https://benhurott.com/tag-incidents.html",
+    "https://benhurott.com/tag-cases.html",
+    "https://benhurott.com/tag-learn.html",
+    "https://benhurott.com/tag-llm.html",
+    "https://benhurott.com/tag-notebooklm.html",
+    "https://benhurott.com/tag-offensive.html",
+    "https://benhurott.com/tag-tool.html",
+    "https://benhurott.com/tag-video.html",
+    "https://benhurott.com/tag-blog.html",
+    "https://benhurott.com/tag-research.html",
+    "https://benhurott.com/tag-mcp.html",
+    "https://benhurott.com/tag-supply-chain.html",
+    "https://benhurott.com/tag-open-source.html",
+    "https://benhurott.com/tags.html"
   ],
   "authors": [
-    "/author-ben-hur.html",
-    "/authors.html"
+    "https://benhurott.com/author-ben-hur.html",
+    "https://benhurott.com/authors.html"
   ],
   "series": [],
   "streams": [
-    "/streams.html"
+    "https://benhurott.com/streams.html"
   ],
   "archives": [
-    "/archive-2026.html",
-    "/archive.html"
+    "https://benhurott.com/archive-2026.html",
+    "https://benhurott.com/archive.html"
   ],
   "feeds": [
-    "/index.rss",
-    "/tag-offensive.rss",
-    "/tag-notebooklm.rss",
-    "/tag-open-source.rss",
-    "/tag-tool.rss",
-    "/tag-blog.rss",
-    "/tag-agent.rss",
-    "/tag-video.rss",
-    "/tag-mcp.rss",
-    "/tag-security.rss",
-    "/tag-ai.rss",
-    "/author-ben-hur.rss",
-    "/archive-2026.rss"
+    "https://benhurott.com/index.rss",
+    "https://benhurott.com/tag-agent.rss",
+    "https://benhurott.com/tag-ai.rss",
+    "https://benhurott.com/tag-security.rss",
+    "https://benhurott.com/tag-incidents.rss",
+    "https://benhurott.com/tag-cases.rss",
+    "https://benhurott.com/tag-learn.rss",
+    "https://benhurott.com/tag-llm.rss",
+    "https://benhurott.com/tag-notebooklm.rss",
+    "https://benhurott.com/tag-offensive.rss",
+    "https://benhurott.com/tag-tool.rss",
+    "https://benhurott.com/tag-video.rss",
+    "https://benhurott.com/tag-blog.rss",
+    "https://benhurott.com/tag-research.rss",
+    "https://benhurott.com/tag-mcp.rss",
+    "https://benhurott.com/tag-supply-chain.rss",
+    "https://benhurott.com/tag-open-source.rss",
+    "https://benhurott.com/author-ben-hur.rss",
+    "https://benhurott.com/archive-2026.rss"
   ],
   "pagination": [
-    "/pages-1.html",
-    "/tag-offensive-1.html",
-    "/tag-notebooklm-1.html",
-    "/tag-open-source-1.html",
-    "/tag-tool-1.html",
-    "/tag-blog-1.html",
-    "/tag-agent-1.html",
-    "/tag-video-1.html",
-    "/tag-mcp-1.html",
-    "/tag-security-1.html",
-    "/tag-ai-1.html",
-    "/author-ben-hur-1.html",
-    "/archive-2026-1.html"
+    "https://benhurott.com/pages-1.html",
+    "https://benhurott.com/tag-agent-1.html",
+    "https://benhurott.com/tag-ai-1.html",
+    "https://benhurott.com/tag-security-1.html",
+    "https://benhurott.com/tag-incidents-1.html",
+    "https://benhurott.com/tag-cases-1.html",
+    "https://benhurott.com/tag-learn-1.html",
+    "https://benhurott.com/tag-llm-1.html",
+    "https://benhurott.com/tag-notebooklm-1.html",
+    "https://benhurott.com/tag-offensive-1.html",
+    "https://benhurott.com/tag-tool-1.html",
+    "https://benhurott.com/tag-video-1.html",
+    "https://benhurott.com/tag-blog-1.html",
+    "https://benhurott.com/tag-research-1.html",
+    "https://benhurott.com/tag-mcp-1.html",
+    "https://benhurott.com/tag-supply-chain-1.html",
+    "https://benhurott.com/tag-open-source-1.html",
+    "https://benhurott.com/author-ben-hur-1.html",
+    "https://benhurott.com/archive-2026-1.html"
   ],
   "file_mappings": [],
   "misc": [
-    "/index.html"
+    "https://benhurott.com/index.html"
   ],
   "summary": {
-    "posts": 3,
+    "posts": 6,
     "pages": 2,
-    "tags": 11,
+    "tags": 17,
     "authors": 2,
     "series": 0,
     "streams": 1,
     "archives": 2,
-    "feeds": 13,
-    "pagination": 13,
+    "feeds": 19,
+    "pagination": 19,
     "file_mappings": 0,
     "misc": 1,
-    "total": 48,
+    "total": 69,
     "meta": {
-      "url": "",
-      "absolute_urls": false
+      "url": "https://benhurott.com",
+      "absolute_urls": true
     }
   }
 }
