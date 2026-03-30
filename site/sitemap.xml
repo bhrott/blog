@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://benhurott.com/claude-ollama.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/maestro-nanoclaw.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/programming-fonts.html</loc>
+  </url>
+  <url>
     <loc>https://benhurott.com/ai-security-institute.html</loc>
   </url>
   <url>
@@ -28,40 +37,31 @@
     <loc>https://benhurott.com/tag-agent.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-ai.html</loc>
-  </url>
-  <url>
     <loc>https://benhurott.com/tag-security.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-incidents.html</loc>
+    <loc>https://benhurott.com/tag-ai.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-cases.html</loc>
+    <loc>https://benhurott.com/tag-threat-modeling.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-claude.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-ollama.html</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tag-learn.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-llm.html</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-notebooklm.html</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-offensive.html</loc>
-  </url>
-  <url>
     <loc>https://benhurott.com/tag-tool.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-video.html</loc>
+    <loc>https://benhurott.com/tag-maestro.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-blog.html</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-research.html</loc>
+    <loc>https://benhurott.com/tag-llm.html</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tag-mcp.html</loc>
@@ -70,7 +70,37 @@
     <loc>https://benhurott.com/tag-supply-chain.html</loc>
   </url>
   <url>
+    <loc>https://benhurott.com/tag-notebooklm.html</loc>
+  </url>
+  <url>
     <loc>https://benhurott.com/tag-open-source.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-incidents.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-cases.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-fonts.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-video.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-ia.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-blog.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-research.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-offensive.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-programming.html</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tags.html</loc>
@@ -97,40 +127,31 @@
     <loc>https://benhurott.com/tag-agent.rss</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-ai.rss</loc>
-  </url>
-  <url>
     <loc>https://benhurott.com/tag-security.rss</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-incidents.rss</loc>
+    <loc>https://benhurott.com/tag-ai.rss</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-cases.rss</loc>
+    <loc>https://benhurott.com/tag-threat-modeling.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-claude.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-ollama.rss</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tag-learn.rss</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-llm.rss</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-notebooklm.rss</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-offensive.rss</loc>
-  </url>
-  <url>
     <loc>https://benhurott.com/tag-tool.rss</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-video.rss</loc>
+    <loc>https://benhurott.com/tag-maestro.rss</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-blog.rss</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-research.rss</loc>
+    <loc>https://benhurott.com/tag-llm.rss</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tag-mcp.rss</loc>
@@ -139,7 +160,37 @@
     <loc>https://benhurott.com/tag-supply-chain.rss</loc>
   </url>
   <url>
+    <loc>https://benhurott.com/tag-notebooklm.rss</loc>
+  </url>
+  <url>
     <loc>https://benhurott.com/tag-open-source.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-incidents.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-cases.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-fonts.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-video.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-ia.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-blog.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-research.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-offensive.rss</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-programming.rss</loc>
   </url>
   <url>
     <loc>https://benhurott.com/author-ben-hur.rss</loc>
@@ -154,40 +205,31 @@
     <loc>https://benhurott.com/tag-agent-1.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-ai-1.html</loc>
-  </url>
-  <url>
     <loc>https://benhurott.com/tag-security-1.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-incidents-1.html</loc>
+    <loc>https://benhurott.com/tag-ai-1.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-cases-1.html</loc>
+    <loc>https://benhurott.com/tag-threat-modeling-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-claude-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-ollama-1.html</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tag-learn-1.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-llm-1.html</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-notebooklm-1.html</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-offensive-1.html</loc>
-  </url>
-  <url>
     <loc>https://benhurott.com/tag-tool-1.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-video-1.html</loc>
+    <loc>https://benhurott.com/tag-maestro-1.html</loc>
   </url>
   <url>
-    <loc>https://benhurott.com/tag-blog-1.html</loc>
-  </url>
-  <url>
-    <loc>https://benhurott.com/tag-research-1.html</loc>
+    <loc>https://benhurott.com/tag-llm-1.html</loc>
   </url>
   <url>
     <loc>https://benhurott.com/tag-mcp-1.html</loc>
@@ -196,7 +238,37 @@
     <loc>https://benhurott.com/tag-supply-chain-1.html</loc>
   </url>
   <url>
+    <loc>https://benhurott.com/tag-notebooklm-1.html</loc>
+  </url>
+  <url>
     <loc>https://benhurott.com/tag-open-source-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-incidents-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-cases-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-fonts-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-video-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-ia-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-blog-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-research-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-offensive-1.html</loc>
+  </url>
+  <url>
+    <loc>https://benhurott.com/tag-programming-1.html</loc>
   </url>
   <url>
     <loc>https://benhurott.com/author-ben-hur-1.html</loc>

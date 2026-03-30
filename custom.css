@@ -17,3 +17,10 @@
   height: auto;
   /* Overrides fixed height if necessary */
 }
+
+.read-more-link {
+  color: var(--pico-primary);
+  border: 0.0625rem solid var(--pico-primary);
+  padding: 0.5em 1em;
+  border-radius: 0.25rem;
+}

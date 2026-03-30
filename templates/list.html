@@ -76,8 +76,11 @@
         </div>
         <p class="content-excerpt p-summary">
             {% if content.description %}
-            {{ content.description | replace(from='"', to="") | truncate(length=250, end=" ...") }}
-            <br /><a class="secondary" href="{{url_for(path=content.slug ~ '.html')}}">read more &rarr;</a>
+            {{ content.description | replace(from='"', to="") }}
+            <br /><br />
+
+            <a class="read-more-link" href="{{url_for(path=content.slug ~ '.html')}}">read more &rarr;</a>
+            
             {% else %}
             {{ content.html }}
             {%- endif %}
