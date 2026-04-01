@@ -9,7 +9,7 @@ tags:
 author: ben-hur
 ---
 
-# Lean the Claude Code Source
+# Learn the Claude Code Source
 
 Well, you probably knows that the [source code of Claude Code leaked today](https://www.reddit.com/r/ClaudeAI/comments/1s8ifm6/claude_code_source_code_has_been_leaked_via_a_map/). 
 
