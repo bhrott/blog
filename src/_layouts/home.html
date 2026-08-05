@@ -1,0 +1,66 @@
+---
+layout: default
+---
+
+{%- comment -%}
+  Project-local override of minima's `_layouts/home.html`. The theme gem is not
+  modified — Jekyll resolves layouts from the site before the theme.
+
+  Difference from the theme's version: each entry is title + excerpt, with the
+  date right-aligned at the foot of the card instead of above the title.
+  `relative_url` keeps links correct under a `baseurl`, and `escape` keeps
+  titles containing &, <, or quotes from breaking the markup.
+{%- endcomment -%}
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- assign posts = paginator.posts | default: site.posts -%}
+
+  {%- if posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <ul class="post-list">
+      {%- for post in posts -%}
+        <li>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {{ post.excerpt }}
+          <time class="post-list-date" datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%Y-%m-%d" }}
+          </time>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if paginator and paginator.total_pages > 1 -%}
+      <nav class="pagination" role="navigation" aria-label="Post pages">
+        {%- if paginator.previous_page -%}
+          <a class="pagination-item prev" href="{{ paginator.previous_page_path | relative_url }}">&larr; newer</a>
+        {%- else -%}
+          <span class="pagination-item prev disabled">&larr; newer</span>
+        {%- endif -%}
+
+        <span class="pagination-progress">
+          page {{ paginator.page }} / {{ paginator.total_pages }}
+        </span>
+
+        {%- if paginator.next_page -%}
+          <a class="pagination-item next" href="{{ paginator.next_page_path | relative_url }}">older &rarr;</a>
+        {%- else -%}
+          <span class="pagination-item next disabled">older &rarr;</span>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+
+    <p class="rss-subscribe">
+      subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a>
+    </p>
+  {%- endif -%}
+</div>

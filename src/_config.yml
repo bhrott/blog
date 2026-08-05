@@ -1,0 +1,70 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: benhurott
+description: >- # this means to ignore newlines until "baseurl:"
+  I'm just a guy who loves code, security, and agents.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://benhurott.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: bhrott
+github_username:  bhrott
+# minima builds this as youtube.com/<value>, so the "@" handle prefix is part of
+# the value. It gets URL-escaped to %40, which YouTube redirects correctly.
+youtube_username: "@benhurott"
+linkedin_username: benhurott
+
+# Build settings
+theme: minima
+
+# Everything before the <!--more--> marker becomes post.excerpt (shown on the
+# home page). Jekyll's default is a blank line, which cuts after the first
+# paragraph. NOTE: a post with no <!--more--> marker has *no* separator to cut
+# on, so its entire body becomes the excerpt — add the marker to every post.
+excerpt_separator: "<!--more-->"
+
+# Pagination (jekyll-paginate). Only takes effect on the page that uses the
+# `paginator` variable, and that page MUST be index.html — the plugin ignores
+# Markdown files, which is why the home page is index.html and not index.markdown.
+paginate: 5
+paginate_path: "/page:num/" # page 1 stays at /, page 2 is /page2/, etc.
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

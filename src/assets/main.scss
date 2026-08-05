@@ -1,0 +1,501 @@
+---
+# Front matter is required so Jekyll compiles this file to /assets/main.css.
+# This file lives in the project and shadows minima's own assets/main.scss —
+# the theme gem itself is never modified.
+---
+
+// ---------------------------------------------------------------------------
+// Palette — cybersecurity / terminal
+// ---------------------------------------------------------------------------
+// These override minima's `!default` variables, so the theme's own rules are
+// recoloured at the source instead of being fought with later.
+
+$cyber-bg:        #0b0e13; // page background, near-black
+$cyber-surface:   #131820; // cards, code blocks, table stripes
+$cyber-border:    #232b36; // hairlines
+$cyber-text:      #c9d1d9; // body copy
+$cyber-muted:     #7d8899; // meta, captions
+$cyber-primary:   #57cc99; // headings, links, accents
+$cyber-primary-d: #3da87b; // pressed / visited
+
+$mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", "Fira Code",
+       Menlo, Consolas, "Liberation Mono", monospace;
+
+// minima variables
+$base-font-family: $mono;
+$base-font-size:   16px;
+$base-line-height: 1.7;
+$spacing-unit:     30px;
+
+$text-color:       $cyber-text;
+$background-color: $cyber-bg;
+$brand-color:      $cyber-primary;
+
+$grey-color:       $cyber-muted;
+$grey-color-light: $cyber-border;
+$grey-color-dark:  $cyber-primary;
+
+$content-width:    820px;
+
+@import "minima";
+
+// ---------------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------------
+
+html {
+  // Faint terminal grid. Fixed so it doesn't scroll with content.
+  background-color: $cyber-bg;
+  background-image:
+    linear-gradient(rgba($cyber-primary, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($cyber-primary, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+  color-scheme: dark;
+}
+
+body {
+  background-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba($cyber-primary, 0.3);
+  color: #fff;
+}
+
+// ---------------------------------------------------------------------------
+// Typography
+// ---------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  color: $cyber-primary;
+  font-family: $mono;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+// Markdown-flavoured heading prefixes, so posts read like a terminal.
+.post-content {
+  h2::before,
+  h3::before,
+  h4::before {
+    color: rgba($cyber-primary, 0.45);
+    font-weight: 400;
+    margin-right: 0.5rem;
+  }
+
+  h2::before { content: "##"; }
+  h3::before { content: "###"; }
+  h4::before { content: "####"; }
+}
+
+a {
+  color: $cyber-primary;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($cyber-primary, 0.35);
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+  &:visited { color: $cyber-primary-d; }
+
+  &:hover {
+    color: #fff;
+    background-color: rgba($cyber-primary, 0.15);
+    border-bottom-color: $cyber-primary;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $cyber-primary;
+    outline-offset: 2px;
+  }
+}
+
+strong { color: #e8eef5; }
+
+hr {
+  border: 0;
+  border-top: 1px solid $cyber-border;
+  margin: $spacing-unit 0;
+}
+
+blockquote {
+  color: $cyber-muted;
+  background-color: rgba($cyber-primary, 0.05);
+  border-left: 3px solid $cyber-primary;
+  padding: 0.6rem $spacing-unit * 0.5;
+  font-style: normal;
+  letter-spacing: 0;
+
+  > :last-child { margin-bottom: 0; }
+}
+
+// ---------------------------------------------------------------------------
+// Code
+// ---------------------------------------------------------------------------
+
+code {
+  background-color: $cyber-surface;
+  border: 1px solid $cyber-border;
+  border-radius: 3px;
+  color: $cyber-primary;
+  font-family: $mono;
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+}
+
+pre {
+  background-color: $cyber-surface;
+  border: 1px solid $cyber-border;
+  border-left: 3px solid $cyber-primary;
+  border-radius: 4px;
+  color: $cyber-text;
+  overflow-x: auto;
+  padding: $spacing-unit * 0.5;
+
+  > code {
+    background: none;
+    border: 0;
+    color: inherit;
+    padding: 0;
+  }
+}
+
+.highlight {
+  background-color: transparent;
+}
+
+.highlighter-rouge .highlight {
+  background-color: $cyber-surface;
+}
+
+// Rouge tokens, dark. minima ships a light-background set; this replaces it.
+.highlight {
+  .c, .cd, .cm, .c1, .cs, .cp { color: #5c6a7d; font-style: italic; } // comments
+  .err, .gr                   { color: #ff8a95; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv { color: $cyber-primary; font-weight: 700; }
+  .o, .ow                     { color: #8fe0bb; }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: #e5c07b; }
+  .m, .mf, .mh, .mi, .mo, .il { color: #c98bde; }
+  .n, .na, .nb, .bp, .nl, .nn, .nx, .py, .nv, .vc, .vg, .vi { color: $cyber-text; }
+  .nc, .nd, .ne, .nf, .fm     { color: #7fd3ff; }
+  .nt                         { color: $cyber-primary; }
+  .no, .nb                    { color: #d19a66; }
+  .gd                         { color: #ff8a95; background-color: rgba(#ff6978, 0.12); }
+  .gi                         { color: $cyber-primary; background-color: rgba($cyber-primary, 0.14); }
+  .gh, .gu                    { color: $cyber-muted; font-weight: 700; }
+  .gs                         { font-weight: 700; }
+  .ge                         { font-style: italic; }
+  .w                          { color: $cyber-border; }
+}
+
+// ---------------------------------------------------------------------------
+// Header
+// ---------------------------------------------------------------------------
+
+.site-header {
+  background-color: rgba($cyber-bg, 0.92);
+  backdrop-filter: blur(6px);
+  border-top: 3px solid $cyber-primary;
+  border-bottom: 1px solid $cyber-border;
+  min-height: 58px;
+  position: relative;
+}
+
+.site-title,
+.site-title:visited {
+  color: $cyber-primary;
+  border-bottom: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+
+  // Terminal prompt in front of the site name.
+  &::before {
+    content: "~/";
+    color: rgba($cyber-primary, 0.5);
+    margin-right: 0.15em;
+  }
+
+  &:hover {
+    background: none;
+    color: #fff;
+  }
+}
+
+.site-nav {
+  background-color: transparent;
+  border: 0;
+  line-height: 58px;
+
+  .page-link {
+    border-bottom: 0;
+    color: $cyber-muted;
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    &:hover {
+      background: none;
+      color: $cyber-primary;
+    }
+  }
+
+  .menu-icon > svg path { fill: $cyber-primary; }
+}
+
+// Mobile drop-down panel
+@media screen and (max-width: 600px) {
+  .site-nav {
+    background-color: $cyber-surface;
+    border: 1px solid $cyber-border;
+    border-radius: 4px;
+    line-height: 1.5;
+
+    .page-link { color: $cyber-text; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Content
+// ---------------------------------------------------------------------------
+
+.page-heading,
+.post-list-heading {
+  color: $cyber-primary;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    margin-top: 0.5rem;
+    background-color: $cyber-primary;
+  }
+}
+
+.post-meta {
+  color: $cyber-muted;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+
+  &::before {
+    content: "$ ";
+    color: rgba($cyber-primary, 0.6);
+  }
+}
+
+.post-list {
+  > li {
+    background-color: rgba($cyber-surface, 0.6);
+    border: 1px solid $cyber-border;
+    border-left: 3px solid transparent;
+    border-radius: 4px;
+    margin-bottom: $spacing-unit * 0.5;
+    padding: $spacing-unit * 0.5;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      background-color: $cyber-surface;
+      border-left-color: $cyber-primary;
+    }
+
+    > h3 { margin-bottom: 0.35rem; }
+
+    // Excerpt. Jekyll emits it as one or more sibling <p> elements; all of them
+    // render in full. Control how much lands here by moving `<!--more-->` in
+    // the post, or with `excerpt_separator` in _config.yml.
+    > p {
+      color: rgba($cyber-text, 0.75);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+
+      + p { margin-top: 0.65rem; }
+
+      code {
+        font-size: 0.85em;
+        padding: 0.1em 0.3em;
+      }
+    }
+  }
+}
+
+// Post date, foot of the card, right-aligned.
+.post-list-date {
+  color: $cyber-muted;
+  display: block;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  margin-top: 0.75rem;
+  text-align: right;
+
+  &::before {
+    content: "$ ";
+    color: rgba($cyber-primary, 0.6);
+  }
+}
+
+.post-link {
+  border-bottom: 0;
+  color: $cyber-primary;
+  display: block;
+  font-size: 1.375rem;
+  margin-top: 0.25rem;
+
+  &:hover {
+    background: none;
+    color: #fff;
+  }
+}
+
+.post-title {
+  color: $cyber-primary;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.post-header {
+  border-bottom: 1px solid $cyber-border;
+  padding-bottom: $spacing-unit * 0.5;
+}
+
+.post-content {
+  h2 { font-size: 1.625rem; }
+  h3 { font-size: 1.3125rem; }
+  h4 { font-size: 1.0625rem; }
+}
+
+// ---------------------------------------------------------------------------
+// Pagination
+// ---------------------------------------------------------------------------
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: $spacing-unit 0;
+  padding-top: $spacing-unit * 0.5;
+  border-top: 1px solid $cyber-border;
+}
+
+.pagination-item {
+  border: 1px solid $cyber-border;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.9rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+a.pagination-item {
+  background-color: rgba($cyber-surface, 0.6);
+  border-bottom: 1px solid $cyber-border; // beat the global `a` border rule
+  color: $cyber-primary;
+
+  &:hover {
+    background-color: rgba($cyber-primary, 0.12);
+    border-color: $cyber-primary;
+    color: #fff;
+  }
+}
+
+.pagination-item.disabled {
+  color: $cyber-muted;
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pagination-progress {
+  color: $cyber-muted;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 400px) {
+  .pagination { gap: 0.4rem; }
+  .pagination-item { padding: 0.4rem 0.6rem; }
+  .pagination-progress { font-size: 0.75rem; }
+}
+
+// ---------------------------------------------------------------------------
+// Tables
+// ---------------------------------------------------------------------------
+
+table {
+  border: 1px solid $cyber-border;
+  color: $cyber-text;
+
+  th, td { border: 1px solid $cyber-border; }
+
+  th {
+    background-color: $cyber-surface;
+    color: $cyber-primary;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  td { background-color: transparent; }
+
+  tr:nth-child(even) td { background-color: rgba($cyber-surface, 0.5); }
+}
+
+// ---------------------------------------------------------------------------
+// Footer
+// ---------------------------------------------------------------------------
+
+.site-footer {
+  background-color: rgba($cyber-surface, 0.5);
+  border-top: 1px solid $cyber-border;
+  color: $cyber-muted;
+  font-size: 0.875rem;
+
+  a, a:visited {
+    color: $cyber-muted;
+    border-bottom: 0;
+
+    &:hover { background: none; color: $cyber-primary; }
+  }
+}
+
+.footer-heading {
+  color: $cyber-primary;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.contact-list,
+.social-media-list {
+  color: $cyber-muted;
+}
+
+.svg-icon {
+  fill: $cyber-muted;
+  transition: fill 0.15s ease;
+
+  a:hover & { fill: $cyber-primary; }
+}
+
+// ---------------------------------------------------------------------------
+// Feed link / misc
+// ---------------------------------------------------------------------------
+
+.rss-subscribe {
+  color: $cyber-muted;
+  font-size: 0.875rem;
+}
+
+img {
+  border: 1px solid $cyber-border;
+  border-radius: 4px;
+  max-width: 100%;
+}
