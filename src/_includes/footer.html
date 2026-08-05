@@ -1,0 +1,29 @@
+{%- comment -%}
+Shadows minima's footer.html. Changes from the theme's copy: the social column
+is gone — those links live in the site nav now (see header.html) — and the
+h-card is one column: the heading carries the author name (the theme repeated
+site.title there and in the contact list), with the site description below it.
+{%- endcomment -%}
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading p-name">
+      {{- site.author | default: site.title | escape -}}
+    </h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <p class="p-note">{{- site.description | escape -}}</p>
+        {%- if site.email -%}
+        <ul class="contact-list">
+          <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+
+</footer>

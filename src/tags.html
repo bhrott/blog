@@ -1,0 +1,28 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+
+{%- comment -%}
+The tag menu: every tag on the site, alphabetical, with its post count. Each
+entry links to the archive that _plugins/tag_pages.rb generates for it.
+
+`site.tags` is a hash of tag name => posts; the `sort` filter turns it into
+[name, posts] pairs ordered by name, which is why the loop indexes with [0]/[1].
+{%- endcomment -%}
+<div class="home">
+  <h1 class="page-heading">Tags</h1>
+
+  <ul class="tag-cloud">
+    {%- assign tags = site.tags | sort -%}
+    {%- for tag in tags -%}
+      <li>
+        <a class="tag-cloud-item" href="{{ tag[0] | slugify | prepend: '/tags/' | append: '/' | relative_url }}">
+          <span class="tag-cloud-name">{{ tag[0] | escape }}</span>
+          <span class="tag-cloud-count">{{ tag[1].size }}</span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>

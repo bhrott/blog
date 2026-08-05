@@ -19,6 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: benhurott
+author: Ben-Hur Santos Ott
 description: >- # this means to ignore newlines until "baseurl:"
   I'm just a guy who loves code, security, and agents.
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -32,6 +33,13 @@ linkedin_username: benhurott
 
 # Build settings
 theme: minima
+
+# Nav contents and order. This MUST stay explicit: minima's default is "every
+# page that has a title", and _plugins/tag_pages.rb generates one titled page
+# per tag — without this the nav would list every tag on the site.
+header_pages:
+  - about.markdown
+  - tags.html
 
 # Everything before the <!--more--> marker becomes post.excerpt (shown on the
 # home page). Jekyll's default is a blank line, which cuts after the first

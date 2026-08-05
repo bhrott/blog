@@ -17,6 +17,11 @@ $cyber-text:      #c9d1d9; // body copy
 $cyber-muted:     #7d8899; // meta, captions
 $cyber-primary:   #57cc99; // headings, links, accents
 $cyber-primary-d: #3da87b; // pressed / visited
+// Secondary accent, for the things that shouldn't compete with the green:
+// post tags and the `$` prompt glyphs. Warm amber against the cool primary —
+// the old green/amber phosphor pairing — and 9.4:1 on the page background, so
+// it clears AA at the small sizes it's used in.
+$cyber-accent:    #e1b07e;
 
 $mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", "Fira Code",
        Menlo, Consolas, "Liberation Mono", monospace;
@@ -243,17 +248,145 @@ pre {
   }
 
   .menu-icon > svg path { fill: $cyber-primary; }
+
+  // Social links (_includes/social.html), icon-only, after the page links.
+  .nav-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding-left: 0.85rem;
+    border-left: 1px solid $cyber-border;
+    vertical-align: middle;
+
+    li { line-height: 0; }
+
+    a {
+      border-bottom: 0;
+      display: inline-block;
+
+      &:hover {
+        background: none;
+
+        .svg-icon { fill: $cyber-primary; }
+      }
+    }
+
+    .svg-icon {
+      width: 18px;
+      height: 18px;
+      padding-right: 0;
+      vertical-align: middle;
+    }
+  }
 }
 
 // Mobile drop-down panel
+//
+// minima's own palm styles size the trigger at 36px and the links at 5px/10px
+// of padding, which is well under the ~44px a fingertip needs. Everything here
+// is rebuilt around full-width rows that clear that, so the whole panel is
+// tappable rather than just the glyphs inside it.
 @media screen and (max-width: 600px) {
   .site-nav {
+    top: 5px;
+    right: $spacing-unit * 0.5;
     background-color: $cyber-surface;
     border: 1px solid $cyber-border;
-    border-radius: 4px;
+    border-radius: 6px;
     line-height: 1.5;
+    text-align: left;
+    // The panel overlaps the page below it when open; keep it on top.
+    z-index: 3;
+    -webkit-tap-highlight-color: rgba($cyber-primary, 0.15);
 
-    .page-link { color: $cyber-text; }
+    // 48px square trigger. The label is the hit area, so it carries the size
+    // and centres the icon rather than the icon padding itself into place.
+    label[for="nav-trigger"] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+    }
+
+    .menu-icon {
+      display: flex;
+      float: none;
+      width: auto;
+      height: auto;
+      padding-top: 0;
+
+      > svg {
+        width: 22px;
+        height: 18px;
+      }
+    }
+
+    // Open state: rows run the full panel width, hairline-separated. The width
+    // lives here rather than on .site-nav so the closed nav shrink-wraps to the
+    // button instead of leaving an empty box beside it.
+    input:checked ~ .trigger {
+      min-width: 190px;
+      padding-bottom: 0;
+      border-top: 1px solid $cyber-border;
+    }
+
+    .page-link {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      margin-left: 0;
+      padding: 0 1rem;
+      color: $cyber-text;
+      font-size: 0.875rem;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $cyber-border;
+      }
+
+      &:active {
+        background-color: rgba($cyber-primary, 0.12);
+        color: $cyber-primary;
+      }
+    }
+
+    // Social icons sit below the page links, each in its own 48px-tall cell
+    // spread across the panel so the targets never crowd each other.
+    .nav-social {
+      display: flex;
+      justify-content: space-around;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      border-left: 0;
+      border-top: 1px solid $cyber-border;
+
+      li {
+        flex: 1;
+        line-height: 0;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        width: 100%;
+
+        &:active {
+          background-color: rgba($cyber-primary, 0.12);
+
+          .svg-icon { fill: $cyber-primary; }
+        }
+      }
+
+      .svg-icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
   }
 }
 
@@ -285,7 +418,7 @@ pre {
 
   &::before {
     content: "$ ";
-    color: rgba($cyber-primary, 0.6);
+    color: $cyber-accent;
   }
 }
 
@@ -325,18 +458,143 @@ pre {
   }
 }
 
-// Post date, foot of the card, right-aligned.
-.post-list-date {
+// Foot of the card: tags on the left, date on the right. They wrap onto
+// separate lines on narrow screens, tags first.
+.post-list-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Chips in the foot of a post card. These are links to /tags/<slug>/, so the
+// border-bottom the global `a` rule adds has to be turned off — the chip has a
+// full border of its own.
+.post-tag {
+  display: inline-block;
+  background-color: rgba($cyber-accent, 0.1);
+  border: 1px solid rgba($cyber-accent, 0.3);
+  border-radius: 3px;
+  color: $cyber-accent;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  padding: 0 0.4em;
+
+  &::before {
+    content: "#";
+    color: rgba($cyber-accent, 0.55);
+  }
+
+  &:visited { color: $cyber-accent; }
+
+  &:hover {
+    background-color: rgba($cyber-accent, 0.22);
+    border-color: $cyber-accent;
+    color: #fff;
+
+    &::before { color: #fff; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tag menu (/tags/) and per-tag archives
+// ---------------------------------------------------------------------------
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0 0 $spacing-unit;
+  padding: 0;
+}
+
+.tag-cloud-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  // Comfortably tappable on a phone without looking oversized on a desktop.
+  min-height: 44px;
+  padding: 0 0.85rem;
+  background-color: rgba($cyber-surface, 0.6);
+  border: 1px solid $cyber-border;
+  border-bottom: 1px solid $cyber-border; // beat the global `a` border rule
+  border-radius: 4px;
+  color: $cyber-accent;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+
+  &::before {
+    content: "#";
+    color: rgba($cyber-accent, 0.55);
+    margin-right: -0.5rem; // cancels the flex gap, so it reads as "#name"
+  }
+
+  &:visited { color: $cyber-accent; }
+
+  &:hover,
+  &:active {
+    background-color: rgba($cyber-accent, 0.12);
+    border-color: rgba($cyber-accent, 0.6);
+    color: #fff;
+
+    &::before { color: #fff; }
+
+    .tag-cloud-count {
+      border-color: rgba($cyber-accent, 0.6);
+      color: #fff;
+    }
+  }
+}
+
+.tag-cloud-count {
+  border-left: 1px solid $cyber-border;
   color: $cyber-muted;
-  display: block;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding-left: 0.5rem;
+}
+
+// Archive heading. Reuses .page-heading, minus its uppercasing — a tag renders
+// as it was written in the post's front matter.
+.tag-heading {
+  text-transform: none;
+
+  &::before {
+    content: "#";
+    color: rgba($cyber-primary, 0.45);
+  }
+}
+
+.tag-count {
+  color: $cyber-muted;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
-  margin-top: 0.75rem;
-  text-align: right;
+  margin-top: -0.5rem;
+}
+
+.post-list-date {
+  color: $cyber-muted;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  margin-left: auto; // holds the date right when the tags wrap to their own line
+  white-space: nowrap;
 
   &::before {
     content: "$ ";
-    color: rgba($cyber-primary, 0.6);
+    color: $cyber-accent;
   }
 }
 
@@ -466,17 +724,36 @@ table {
   }
 }
 
+// Carries the author's name, so it keeps the capitalisation as written —
+// minima's copy lowercased it because it printed the site title here.
 .footer-heading {
   color: $cyber-primary;
   font-size: 1rem;
   letter-spacing: 0.04em;
-  text-transform: lowercase;
+  text-transform: none;
 }
 
-.contact-list,
-.social-media-list {
+.contact-list {
   color: $cyber-muted;
 }
+
+// The footer is a single column now that the social links moved to the nav and
+// the name moved into the heading. Flex replaces minima's floated percentage
+// widths, which assumed three columns.
+.footer-col-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-unit * 0.5;
+  margin-left: 0;
+}
+
+.footer-col {
+  float: none;
+  width: auto;
+  padding-left: 0;
+}
+
+.footer-col-1 { flex: 1 1 300px; }
 
 .svg-icon {
   fill: $cyber-muted;

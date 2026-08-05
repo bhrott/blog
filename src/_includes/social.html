@@ -1,0 +1,39 @@
+{%- comment -%}
+Shadows minima's own social.html. The theme puts these in the footer; here they
+live in the site nav instead, so this renders icon-only links (the visible
+handle text minima emits would not fit the nav bar).
+
+Handles still come from _config.yml (`github_username`, etc.) and the icons from
+minima's sprite at assets/minima-social-icons.svg — see that file for the ids
+available if you add another network.
+{%- endcomment -%}
+<ul class="nav-social">
+  {%- if site.github_username -%}
+  <li>
+    <a href="https://github.com/{{ site.github_username | cgi_escape | escape }}" title="GitHub" aria-label="GitHub" rel="me">
+      <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.twitter_username -%}
+  <li>
+    <a href="https://www.twitter.com/{{ site.twitter_username | cgi_escape | escape }}" title="Twitter" aria-label="Twitter" rel="me">
+      <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.linkedin_username -%}
+  <li>
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username | cgi_escape | escape }}" title="LinkedIn" aria-label="LinkedIn" rel="me">
+      <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.youtube_username -%}
+  <li>
+    <a href="https://youtube.com/{{ site.youtube_username | cgi_escape | escape }}" title="YouTube" aria-label="YouTube" rel="me">
+      <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg>
+    </a>
+  </li>
+  {%- endif -%}
+</ul>

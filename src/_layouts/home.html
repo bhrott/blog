@@ -7,9 +7,9 @@ layout: default
   modified — Jekyll resolves layouts from the site before the theme.
 
   Difference from the theme's version: each entry is title + excerpt, with the
-  date right-aligned at the foot of the card instead of above the title.
-  `relative_url` keeps links correct under a `baseurl`, and `escape` keeps
-  titles containing &, <, or quotes from breaking the markup.
+  post's tags and its date sharing the foot of the card — tags left, date right
+  — instead of the date sitting above the title. That card markup lives in
+  _includes/post-card.html, because the per-tag archives render the same thing.
 {%- endcomment -%}
 
 <div class="home">
@@ -25,17 +25,7 @@ layout: default
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
       {%- for post in posts -%}
-        <li>
-          <h3>
-            <a class="post-link" href="{{ post.url | relative_url }}">
-              {{ post.title | escape }}
-            </a>
-          </h3>
-          {{ post.excerpt }}
-          <time class="post-list-date" datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%Y-%m-%d" }}
-          </time>
-        </li>
+        {%- include post-card.html post=post -%}
       {%- endfor -%}
     </ul>
 

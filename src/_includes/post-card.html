@@ -1,0 +1,34 @@
+{%- comment -%}
+One entry in a post list: title, excerpt, then tags and date sharing the foot of
+the card. Shared by the home page and the per-tag archives (_layouts/tag.html)
+so the two never drift apart.
+
+Takes `include.post`. Tags link to their archive at /tags/<slug>/, built by
+_plugins/tag_pages.rb — `slugify` here has to match the slug that plugin writes.
+{%- endcomment -%}
+<li>
+  <h3>
+    <a class="post-link" href="{{ include.post.url | relative_url }}">
+      {{ include.post.title | escape }}
+    </a>
+  </h3>
+  {{ include.post.excerpt }}
+  <div class="post-list-foot">
+    {%- if include.post.tags.size > 0 -%}
+      <ul class="post-tags">
+        {%- for tag in include.post.tags -%}
+          <li>
+            <a class="post-tag" href="{{ tag | slugify | prepend: '/tags/' | append: '/' | relative_url }}">
+              {{- tag | escape -}}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <span></span>
+    {%- endif -%}
+    <time class="post-list-date" datetime="{{ include.post.date | date_to_xmlschema }}">
+      {{ include.post.date | date: "%Y-%m-%d" }}
+    </time>
+  </div>
+</li>
