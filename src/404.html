@@ -1,6 +1,12 @@
 ---
 permalink: /404.html
 layout: page
+title: Page not found
+# Keep the error page out of the sitemap and out of the index. GitHub Pages
+# serves this with a 404 status, which is the real signal, but the page is also
+# reachable at its own URL with a 200 — hence the explicit noindex.
+sitemap: false
+robots: noindex, follow
 ---
 
 <style type="text/css" media="screen">

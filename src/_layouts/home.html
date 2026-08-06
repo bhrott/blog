@@ -15,6 +15,19 @@ layout: default
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
+  {%- else -%}
+    {%- comment -%}
+      Every page needs exactly one h1, and the home page has no visible heading
+      to hang it on — the site title in the nav is an <a>, not a heading, and
+      "Posts" below is an h2. So the h1 is here, off-screen: it reaches crawlers
+      and screen readers without putting a redundant title above the search bar.
+
+      It carries site.title + site.tagline rather than just the site name,
+      because on its own "benhurott" says nothing about what the site is.
+    {%- endcomment -%}
+    <h1 class="visually-hidden">
+      {{- site.title | escape }} — {{ site.tagline | escape -}}
+    </h1>
   {%- endif -%}
 
   {{ content }}

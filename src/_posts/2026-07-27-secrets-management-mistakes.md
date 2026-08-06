@@ -4,6 +4,9 @@ title:  "Five Secrets-Management Mistakes I Find in Every Codebase"
 date:   2026-07-27 17:10:00 -0300
 categories: appsec devsecops
 tags: [secrets, devsecops, vault]
+description: >-
+  Five secrets-management mistakes in nearly every codebase: keys in git
+  history, .env files baked into images, shared credentials, no rotation.
 ---
 Every team says they take secrets seriously. Then you `git log -p` for the word
 "password" and find the API key someone committed in 2021, rotated never. Here

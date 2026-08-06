@@ -4,6 +4,9 @@ title:  "Recon Fundamentals: Getting the Most Out of Nmap"
 date:   2026-07-01 09:00:00 -0300
 categories: recon tooling
 tags: [nmap, scanning, enumeration]
+description: >-
+  Nmap recon past the default scan: an -sn sweep for live hosts, a top-1000 SYN
+  scan for the surface, then deep version detection on what matters.
 ---
 Every engagement starts the same way: you have a scope and almost no context.
 Nmap is still the fastest way to turn a list of hosts into an actual picture of

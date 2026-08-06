@@ -17,6 +17,11 @@ gem "minima", "~> 2.5"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-paginate", "~> 1.1"
+  gem "jekyll-sitemap", "~> 1.4"
+  # jekyll-seo-tag is already pulled in as a dependency of minima, which calls
+  # {% seo %} from its head.html. Pinned explicitly so the <head> meta tags do
+  # not silently disappear if the theme ever drops it.
+  gem "jekyll-seo-tag", "~> 2.8"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -4,6 +4,9 @@ title:  "Threat Modeling for Developers Who Hate Meetings"
 date:   2026-07-24 09:50:00 -0300
 categories: appsec process
 tags: [threat-modeling, sdlc, design]
+description: >-
+  A twenty-minute threat model developers can run themselves: four questions, a
+  data-flow sketch, STRIDE as a prompt, and mitigations that live with the spec.
 ---
 Threat modeling has a branding problem. Say the words and developers picture a
 three-hour whiteboard session with a security team that has never read the code.

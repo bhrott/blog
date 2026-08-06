@@ -4,6 +4,9 @@ title:  "Writing Your First YARA Rule That Isn't Garbage"
 date:   2026-07-15 13:00:00 -0300
 categories: blue-team threat-hunting
 tags: [yara, detection, malware]
+description: >-
+  How to write a YARA rule that catches a malware family without false
+  positives: anchor on behavioural artifacts, not bytes the next build changes.
 ---
 YARA rules are easy to write and hard to write *well*. A rule that matches your
 one sample is trivial; a rule that catches the family without lighting up on

@@ -4,6 +4,9 @@ title:  "Hunting Subdomain Takeovers With a 40-Line Script"
 date:   2026-07-30 09:15:00 -0300
 categories: recon
 tags: [dns, recon, bugbounty]
+description: >-
+  Find subdomain takeovers at scale: enumerate hostnames from certificate
+  transparency, flag dangling CNAMEs, then fingerprint before you claim one.
 ---
 A subdomain takeover happens when DNS still points somewhere the organization no
 longer controls. The CNAME survives; the bucket, the app, the CDN distribution

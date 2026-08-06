@@ -552,8 +552,10 @@ pre {
   }
 }
 
-// The placeholder carries the same information on screen; the label is here for
-// anyone arriving through a screen reader.
+// Off-screen but still read aloud and still indexed — `display: none` would be
+// neither. Used by the search field's label (the placeholder carries the same
+// text on screen) and by the home page's h1 (see _layouts/home.html).
+.visually-hidden,
 .search-label {
   position: absolute;
   width: 1px;

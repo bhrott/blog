@@ -4,6 +4,9 @@ title:  "Understanding JWT Attacks (and Why alg:none Still Works)"
 date:   2026-07-07 11:15:00 -0300
 categories: web appsec
 tags: [jwt, auth, tokens]
+description: >-
+  How JWT attacks work: alg none, RS256 to HS256 confusion, and crackable HMAC
+  secrets — and why pinning the algorithm server-side stops all three.
 ---
 JSON Web Tokens are everywhere, and so are the ways to abuse them. The classic
 `alg: none` bypass is a decade old and yet I still find it in production auth

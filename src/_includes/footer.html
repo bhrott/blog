@@ -9,8 +9,13 @@ site.title there and in the contact list), with the site description below it.
 
   <div class="wrapper">
 
+    {%- comment -%}
+      `site.author` is a hash (name + twitter) so jekyll-seo-tag can emit
+      twitter:creator — hence `.name` rather than the bare value minima uses.
+      The `default` chain keeps this working if it is ever a plain string again.
+    {%- endcomment -%}
     <h2 class="footer-heading p-name">
-      {{- site.author | default: site.title | escape -}}
+      {{- site.author.name | default: site.author | default: site.title | escape -}}
     </h2>
 
     <div class="footer-col-wrapper">

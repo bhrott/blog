@@ -10,6 +10,7 @@
 # post; titles, tags and excerpts are indexed whole and carry more weight anyway.
 layout: null
 permalink: /search.json
+sitemap: false # data, not a page — robots.txt disallows it too
 ---
 [
   {%- for post in site.posts -%}

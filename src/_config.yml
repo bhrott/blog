@@ -19,7 +19,12 @@
 # in the templates via {{ site.myvariable }}.
 
 title: benhurott
-author: Ben-Hur Santos Ott
+# A hash, not a string, so jekyll-seo-tag can emit twitter:creator alongside the
+# author name. Anything reading this in a template must use `site.author.name`
+# — see _includes/footer.html.
+author:
+  name: Ben-Hur Santos Ott
+  twitter: bhrott
 description: >- # this means to ignore newlines until "baseurl:"
   I'm just a guy who loves code, security, and agents.
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -31,8 +36,64 @@ github_username:  bhrott
 youtube_username: "@benhurott"
 linkedin_username: benhurott
 
+# ---------------------------------------------------------------------------
+# SEO
+# ---------------------------------------------------------------------------
+# Almost everything here is read by jekyll-seo-tag, which minima's head.html
+# invokes via `{% seo %}`. Inspect the result with:
+#   bundle exec jekyll build && sed -n '1,40p' _site/index.html
+
+# Appended to the site title on the home page only: "benhurott | <tagline>".
+# Interior pages get "<page title> | benhurott", so this is the one shot at
+# telling a search result what the whole site is about.
+tagline: >-
+  Application security, offensive tooling, and secure AI-assisted development
+
+# Feeds both <html lang> (minima) and og:locale (seo-tag). It must be written
+# with a HYPHEN: that is the valid BCP 47 form for the lang attribute, and
+# seo-tag converts it to the underscored `en_US` that og:locale wants. Writing
+# `en_US` here produces an invalid <html lang="en_US">.
+lang: en-US
+
+# twitter:site on every page, plus the card format. `summary_large_image` is
+# what turns a link preview into the full-width 1200x630 card instead of a
+# thumbnail — it only applies on pages that actually resolve an image, which
+# the `defaults` block below guarantees.
+twitter:
+  username: bhrott
+  card: summary_large_image
+
+# Feeds the schema.org Person node and its `sameAs` links. NOTE: seo-tag only
+# emits `sameAs` on the home page and /about/ — that is by design, those are the
+# pages an entity claim belongs on.
+social:
+  name: Ben-Hur Santos Ott
+  type: Person
+  links:
+    - https://github.com/bhrott
+    - https://www.twitter.com/bhrott
+    - https://www.linkedin.com/in/benhurott
+    - https://youtube.com/@benhurott
+
 # Build settings
 theme: minima
+
+# Front matter applied to every page and post that does not set it itself.
+defaults:
+  - scope:
+      path: "" # everything
+    values:
+      # Site-wide og:image / twitter:image. seo-tag reads `image` per page only,
+      # so a default here is the only way to make it site-wide. Any post can
+      # override it with its own `image:` in front matter.
+      #
+      # The file is generated from tools/og-card.html — run tools/build-og-card.sh
+      # after editing that, and commit the PNG.
+      image:
+        path: /assets/og-default.png
+        width: 1200
+        height: 630
+        alt: "benhurott — application security, offensive tooling, and secure AI-assisted development"
 
 # Nav contents and order. This MUST stay explicit: minima's default is "every
 # page that has a title", and _plugins/tag_pages.rb generates one titled page
@@ -56,6 +117,14 @@ paginate_path: "/page:num/" # page 1 stays at /, page 2 is /page2/, etc.
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  # Writes /sitemap.xml (every page, post and tag archive) and /robots.txt.
+  # NOTE: it only generates robots.txt when the site has none of its own — this
+  # site ships one at robots.txt, so that file wins and has to name the sitemap
+  # itself.
+  - jekyll-sitemap
+  # Already loaded as a minima dependency; listed so the <head> meta tags do not
+  # depend on the theme continuing to pull it in.
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -4,6 +4,9 @@ title:  "A Sane Burp Suite Workflow for Web App Testing"
 date:   2026-07-04 14:30:00 -0300
 categories: web appsec
 tags: [burp, proxy, web]
+description: >-
+  A repeatable Burp Suite workflow for web app testing: set scope before you
+  browse, then browse, triage into Repeater, mutate by hand, automate last.
 ---
 Burp Suite does everything, which is exactly the problem. Opening it with no
 plan means an hour of clicking before you have tested a single thing. Here is the

@@ -4,6 +4,9 @@ title:  "DNS Exfiltration Explained, With a Working Demo"
 date:   2026-07-21 15:25:00 -0300
 categories: red-team exfiltration
 tags: [dns, exfiltration, c2]
+description: >-
+  How DNS exfiltration works end to end, with a working demo: base32-encode data
+  into subdomains you control, then read it off your name server's query log.
 ---
 When every outbound port is filtered, DNS is almost always still open —
 otherwise the network could not resolve anything. That makes it a reliable, if

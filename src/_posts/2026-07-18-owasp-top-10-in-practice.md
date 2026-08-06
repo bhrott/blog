@@ -4,6 +4,9 @@ title:  "The OWASP Top 10 as It Actually Shows Up in Pentests"
 date:   2026-07-18 10:40:00 -0300
 categories: web appsec
 tags: [owasp, web, methodology]
+description: >-
+  Which OWASP Top 10 categories actually show up in pentests: broken access
+  control by a wide margin, then injection and misconfiguration.
 ---
 The OWASP Top 10 is a great awareness document and a mediocre testing
 methodology. After enough assessments you notice the list does not match the

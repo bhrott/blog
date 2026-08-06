@@ -1,0 +1,18 @@
+---
+# Front matter is required so Jekyll renders the Liquid below instead of
+# copying this file through verbatim.
+#
+# jekyll-sitemap generates a robots.txt of its own, but only when the site does
+# not already have one. This file wins, so it has to point at the sitemap
+# itself — without that line, nothing advertises /sitemap.xml.
+layout: null
+sitemap: false
+---
+User-agent: *
+Allow: /
+
+# The search index behind the site search (assets/search.js). It is data, not a
+# page: crawling it wastes budget and it has no value in results.
+Disallow: /search.json
+
+Sitemap: {{ "/sitemap.xml" | absolute_url }}
