@@ -509,6 +509,111 @@ pre {
 }
 
 // ---------------------------------------------------------------------------
+// Search
+// ---------------------------------------------------------------------------
+// The bar ships `hidden` and assets/search.js unhides it, so these styles only
+// ever apply where the search actually works.
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba($cyber-surface, 0.6);
+  border: 1px solid $cyber-border;
+  border-radius: 4px;
+  margin-bottom: $spacing-unit * 0.5;
+  padding: 0 0.85rem;
+  transition: border-color 0.15s ease;
+
+  &:focus-within { border-color: rgba($cyber-primary, 0.6); }
+
+  // Terminal prompt, matching the one on the site title and the post dates.
+  &::before {
+    content: "$";
+    color: $cyber-accent;
+    flex: none;
+  }
+
+  // The keyboard hint is decoration; it goes away where there is no keyboard to
+  // press and no room to say so.
+  &::after {
+    content: "/";
+    flex: none;
+    border: 1px solid $cyber-border;
+    border-radius: 3px;
+    color: $cyber-muted;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    padding: 0 0.35em;
+  }
+
+  @media screen and (max-width: 600px) {
+    &::after { display: none; }
+  }
+}
+
+// The placeholder carries the same information on screen; the label is here for
+// anyone arriving through a screen reader.
+.search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  // 44px of height without a fixed height, so the row still grows with the text.
+  padding: 0.65rem 0;
+  background: none;
+  border: 0;
+  color: $cyber-text;
+  font-family: $mono;
+  font-size: 0.9375rem;
+  caret-color: $cyber-primary;
+
+  &::placeholder { color: $cyber-muted; }
+  &:focus { outline: none; } // .search carries the focus ring for the whole row
+
+  // Safari draws its own clear button and reserves space for it; the Escape key
+  // does the same job in every browser.
+  &::-webkit-search-cancel-button { -webkit-appearance: none; }
+}
+
+.search-status {
+  color: $cyber-muted;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  margin-bottom: $spacing-unit * 0.5;
+
+  &:empty { display: none; }
+}
+
+.search-results mark {
+  background-color: rgba($cyber-primary, 0.22);
+  border-radius: 2px;
+  color: #fff;
+  padding: 0 0.1em;
+}
+
+// Results replace the browse list rather than filtering it: the list on screen
+// only holds one page of posts, but the search covers every post on the site.
+.home.is-searching {
+  .browse-list,
+  .post-list-heading,
+  .pagination,
+  .rss-subscribe {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Tag menu (/tags/) and per-tag archives
 // ---------------------------------------------------------------------------
 

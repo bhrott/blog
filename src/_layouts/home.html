@@ -22,8 +22,15 @@ layout: default
   {%- assign posts = paginator.posts | default: site.posts -%}
 
   {%- if posts.size > 0 -%}
+    {%- comment -%}
+      Search over every post on the site, not just the page below it. While a
+      query is active, assets/search.js puts `is-searching` on `.home` and the
+      browse list, its heading and the pager all hide — see main.scss.
+    {%- endcomment -%}
+    {%- include search.html -%}
+
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
+    <ul class="post-list browse-list">
       {%- for post in posts -%}
         {%- include post-card.html post=post -%}
       {%- endfor -%}
