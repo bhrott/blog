@@ -9,6 +9,9 @@ Shadows minima's head.html. Changes from the theme's copy:
   * theme-color, matching the header rule in assets/main.scss.
   * a favicon <link>. The theme relies on browsers guessing /favicon.ico; being
     explicit also lets the file be cached under its own URL.
+  * the two Google Fonts the design runs on — Caveat Brush for titles, DM Sans
+    for body copy. `display=swap` so text paints in the fallback immediately
+    rather than staying invisible while the files download.
 
 Everything else — {% seo %}, the stylesheet, {% feed_meta %}, the analytics
 include — is the theme's, unchanged.
@@ -21,6 +24,9 @@ include — is the theme's, unchanged.
   <meta name="robots" content="{{ page.robots }}">
   {%- endif -%}
   {%- seo -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" sizes="any">
   <link rel="sitemap" type="application/xml" href="{{ "/sitemap.xml" | relative_url }}">
