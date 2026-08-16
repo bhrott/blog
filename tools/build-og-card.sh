@@ -22,12 +22,16 @@ fi
 
 # --window-size must match the body dimensions in og-card.html (1200x630).
 # --hide-scrollbars stops a scrollbar gutter from eating the right edge.
+# --virtual-time-budget holds the screenshot until the two Google Fonts the card
+# uses have downloaded; without it the title rasterises in the fallback face.
+# That makes this step need network access, unlike the rest of the build.
 "$chrome" \
   --headless \
   --disable-gpu \
   --hide-scrollbars \
   --force-device-scale-factor=1 \
   --window-size=1200,630 \
+  --virtual-time-budget=10000 \
   --screenshot="$out" \
   "file://$root/tools/og-card.html" 2>/dev/null
 

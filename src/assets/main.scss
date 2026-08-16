@@ -5,23 +5,40 @@
 ---
 
 // ---------------------------------------------------------------------------
-// Palette — cybersecurity / terminal
+// Palette — blackboard
 // ---------------------------------------------------------------------------
 // These override minima's `!default` variables, so the theme's own rules are
 // recoloured at the source instead of being fought with later.
+//
+// The model is a black slate board written on with three sticks of chalk. No
+// chalk is pure white — it is warm and a little dusty — so every foreground
+// here is pulled slightly toward yellow, which is also what keeps the page from
+// looking like plain white-on-black.
 
-$cyber-bg:        #0b0e13; // page background, near-black
-$cyber-surface:   #131820; // cards, code blocks, table stripes
-$cyber-border:    #232b36; // hairlines
-$cyber-text:      #c9d1d9; // body copy
-$cyber-muted:     #7d8899; // meta, captions
-$cyber-primary:   #57cc99; // headings, links, accents
-$cyber-primary-d: #3da87b; // pressed / visited
-// Secondary accent, for the things that shouldn't compete with the green:
-// post tags and the `$` prompt glyphs. Warm amber against the cool primary —
-// the old green/amber phosphor pairing — and 9.4:1 on the page background, so
-// it clears AA at the small sizes it's used in.
-$cyber-accent:    #e1b07e;
+$board:          #0d0d0c; // the slate itself
+$board-panel:    #171715; // cards, code blocks, table stripes — a wiped patch
+$chalk-line:     #35342e; // hairlines, chalk-dust edges
+$chalk:          #dcd8cd; // body copy — 14.6:1 on the board
+$chalk-dim:      #99948a; // meta, captions — 7.1:1, clears AA at small sizes
+
+// White chalk. Headings and titles, the brightest thing on the board.
+$chalk-white:    #f6f2e7;
+
+// Yellow chalk. Everything actionable — links, pagination buttons, tag chips,
+// and the rules under headings. One colour for "you can follow this", so a tag
+// and a button never look like different kinds of thing. 12.4:1 on the board.
+$chalk-yellow:   #f2d88a;
+$chalk-yellow-d: #c9b370; // pressed / visited
+
+// The rest of the chalk box. These earn their place in code listings, where a
+// syntax theme genuinely needs five or six hues to separate token classes —
+// none of them is used anywhere in the page chrome, which is white for
+// headings, yellow for anything you can click, and grey for everything else.
+$chalk-blue:     #9ec7e4;
+$chalk-green:    #a9d6a4;
+$chalk-pink:     #f0a9a1;
+$chalk-violet:   #cfb0e6;
+
 
 // ---------------------------------------------------------------------------
 // Type
@@ -45,13 +62,13 @@ $base-font-size:   16px;
 $base-line-height: 1.7;
 $spacing-unit:     30px;
 
-$text-color:       $cyber-text;
-$background-color: $cyber-bg;
-$brand-color:      $cyber-primary;
+$text-color:       $chalk;
+$background-color: $board;
+$brand-color:      $chalk-yellow;
 
-$grey-color:       $cyber-muted;
-$grey-color-light: $cyber-border;
-$grey-color-dark:  $cyber-primary;
+$grey-color:       $chalk-dim;
+$grey-color-light: $chalk-line;
+$grey-color-dark:  $chalk-white;
 
 $content-width:    820px;
 
@@ -61,13 +78,39 @@ $content-width:    820px;
 // Base
 // ---------------------------------------------------------------------------
 
+// The slate. Three layers, all fixed so the board stays put and the writing
+// scrolls over it:
+//
+//   1. Chalk-dust bloom — soft off-centre smudges, the residue a duster leaves
+//      behind. Deliberately asymmetric; an even wash would just read as a
+//      vignette.
+//   2. Eraser streaks — a wide, very faint sweep across the middle of the
+//      board, angled a couple of degrees off horizontal like a real arm makes.
+//   3. Slate grain — desaturated fractal noise, tiled. This is what stops the
+//      background from looking like flat #0d0d0c, and it is the layer doing
+//      most of the work.
+//
+// Every alpha here is between 0.01 and 0.05. The texture should be something
+// you notice only if you go looking for it — past that it starts competing
+// with the text, which on a dark page is where legibility goes first.
 html {
-  // Faint terminal grid. Fixed so it doesn't scroll with content.
-  background-color: $cyber-bg;
+  background-color: $board;
   background-image:
-    linear-gradient(rgba($cyber-primary, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba($cyber-primary, 0.035) 1px, transparent 1px);
-  background-size: 32px 32px;
+    radial-gradient(ellipse 55% 40% at 18% 12%, rgba($chalk-white, 0.045), transparent 72%),
+    radial-gradient(ellipse 45% 35% at 85% 78%, rgba($chalk-white, 0.032), transparent 70%),
+    radial-gradient(ellipse 35% 25% at 62% 35%, rgba($chalk-white, 0.022), transparent 68%),
+    // 2deg, not 92deg: in CSS the angle is the gradient's direction of travel,
+    // so the bands come out perpendicular to it. A near-vertical sweep here
+    // reads as corduroy; the streaks have to run across the board.
+    repeating-linear-gradient(
+      2deg,
+      rgba($chalk-white, 0.013) 0 4px,
+      transparent 4px 15px
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)' opacity='0.055'/%3E%3C/svg%3E");
+  background-size: cover, cover, cover, 100% 42%, 220px 220px;
+  background-position: 0 0, 0 0, 0 0, center 30%, 0 0;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
   background-attachment: fixed;
   color-scheme: dark;
 }
@@ -77,8 +120,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+// Chalk laid down thick, rather than a coloured highlight.
 ::selection {
-  background: rgba($cyber-primary, 0.3);
+  background: rgba($chalk-white, 0.22);
   color: #fff;
 }
 
@@ -86,8 +130,24 @@ body {
 // Typography
 // ---------------------------------------------------------------------------
 
+// A chalk rule: a line drawn freehand, not against a ruler. The wobble is baked
+// into the SVG path; it is used as a mask rather than a background image so the
+// colour stays a Sass variable instead of a hex code buried inside a data URI.
+@mixin chalk-rule($color, $height: 7px, $alpha: 0.8) {
+  content: "";
+  display: block;
+  height: $height;
+  background-color: $color;
+  opacity: $alpha;
+  $line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 7' preserveAspectRatio='none'%3E%3Cpath d='M2 4.6 C 26 2.2, 50 6.6, 74 3.9 C 98 1.4, 122 6.8, 146 4.2 C 168 1.9, 184 6.0, 198 3.4' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask: $line no-repeat center / 100% 100%;
+  mask: $line no-repeat center / 100% 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  color: $cyber-primary;
+  // White chalk — the brightest thing on the board, and what separates a
+  // heading from a link (yellow) without needing a weight it doesn't have.
+  color: $chalk-white;
   font-family: $title;
   // Caveat Brush ships one weight. 400 keeps the browser from synthesising a
   // bold, and the tracking stays at 0 — negative letter-spacing pulls the
@@ -96,60 +156,67 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
   // Long ascenders and descenders; the default heading leading clips them.
   line-height: 1.25;
+  // Chalk bloom. The tight shadow softens the stroke edge the way a dusty
+  // stick does; the wide one is the faint halo around it. Headings only —
+  // at body sizes this smears into illegibility.
+  text-shadow:
+    0 0 1px rgba($chalk-white, 0.4),
+    0 0 14px rgba($chalk-white, 0.07);
 }
 
-// Markdown-flavoured heading prefixes, so posts read like a terminal.
+// Section headings inside a post get a chalk rule under them instead of the
+// old `##` markdown prefixes — the board has no command line to echo.
 .post-content {
-  h2::before,
-  h3::before,
-  h4::before {
-    color: rgba($cyber-primary, 0.45);
-    // The marker is literal markdown, so it stays in the code face rather than
-    // inheriting the heading's script.
-    font-family: $mono;
-    font-size: 0.7em;
-    font-weight: 400;
-    margin-right: 0.5rem;
+  h2::after {
+    @include chalk-rule($chalk-yellow, $alpha: 0.55);
+    width: 100%;
+    max-width: 260px;
+    margin-top: 0.3rem;
   }
 
-  h2::before { content: "##"; }
-  h3::before { content: "###"; }
-  h4::before { content: "####"; }
+  h3::after {
+    @include chalk-rule($chalk-white, 5px, 0.28);
+    width: 100%;
+    max-width: 150px;
+    margin-top: 0.2rem;
+  }
 }
 
 a {
-  color: $cyber-primary;
+  color: $chalk-yellow;
   text-decoration: none;
-  border-bottom: 1px solid rgba($cyber-primary, 0.35);
+  border-bottom: 1px solid rgba($chalk-yellow, 0.35);
   transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
 
-  &:visited { color: $cyber-primary-d; }
+  &:visited { color: $chalk-yellow-d; }
 
+  // Hover is a chalk smudge — the dust you'd rub off running a finger along
+  // the line — not a solid highlighter block.
   &:hover {
-    color: #fff;
-    background-color: rgba($cyber-primary, 0.15);
-    border-bottom-color: $cyber-primary;
+    color: $chalk-white;
+    background-color: rgba($chalk-yellow, 0.13);
+    border-bottom-color: $chalk-yellow;
     text-decoration: none;
   }
 
   &:focus-visible {
-    outline: 2px solid $cyber-primary;
+    outline: 2px solid $chalk-yellow;
     outline-offset: 2px;
   }
 }
 
-strong { color: #e8eef5; }
+strong { color: $chalk-white; }
 
 hr {
   border: 0;
-  border-top: 1px solid $cyber-border;
+  border-top: 1px solid $chalk-line;
   margin: $spacing-unit 0;
 }
 
 blockquote {
-  color: $cyber-muted;
-  background-color: rgba($cyber-primary, 0.05);
-  border-left: 3px solid $cyber-primary;
+  color: $chalk-dim;
+  background-color: rgba($chalk-white, 0.035);
+  border-left: 3px solid rgba($chalk-yellow, 0.75);
   padding: 0.6rem $spacing-unit * 0.5;
   font-style: normal;
   letter-spacing: 0;
@@ -161,22 +228,25 @@ blockquote {
 // Code
 // ---------------------------------------------------------------------------
 
+// Code is the one place the handwriting metaphor is dropped: a listing on a
+// board is the bit the teacher boxed off and copied out literally, so it keeps
+// the monospace face and gets a ruled box drawn around it.
 code {
-  background-color: $cyber-surface;
-  border: 1px solid $cyber-border;
+  background-color: $board-panel;
+  border: 1px solid $chalk-line;
   border-radius: 3px;
-  color: $cyber-primary;
+  color: $chalk-green;
   font-family: $mono;
   font-size: 0.875em;
   padding: 0.15em 0.4em;
 }
 
 pre {
-  background-color: $cyber-surface;
-  border: 1px solid $cyber-border;
-  border-left: 3px solid $cyber-primary;
+  background-color: $board-panel;
+  border: 1px solid $chalk-line;
+  border-left: 3px solid rgba($chalk-green, 0.6);
   border-radius: 4px;
-  color: $cyber-text;
+  color: $chalk;
   overflow-x: auto;
   padding: $spacing-unit * 0.5;
 
@@ -193,58 +263,63 @@ pre {
 }
 
 .highlighter-rouge .highlight {
-  background-color: $cyber-surface;
+  background-color: $board-panel;
 }
 
-// Rouge tokens, dark. minima ships a light-background set; this replaces it.
+// Rouge tokens, drawn from the chalk box. minima ships a light-background set;
+// this replaces it.
 .highlight {
-  .c, .cd, .cm, .c1, .cs, .cp { color: #5c6a7d; font-style: italic; } // comments
-  .err, .gr                   { color: #ff8a95; }
-  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv { color: $cyber-primary; font-weight: 700; }
-  .o, .ow                     { color: #8fe0bb; }
-  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: #e5c07b; }
-  .m, .mf, .mh, .mi, .mo, .il { color: #c98bde; }
-  .n, .na, .nb, .bp, .nl, .nn, .nx, .py, .nv, .vc, .vg, .vi { color: $cyber-text; }
-  .nc, .nd, .ne, .nf, .fm     { color: #7fd3ff; }
-  .nt                         { color: $cyber-primary; }
-  .no, .nb                    { color: #d19a66; }
-  .gd                         { color: #ff8a95; background-color: rgba(#ff6978, 0.12); }
-  .gi                         { color: $cyber-primary; background-color: rgba($cyber-primary, 0.14); }
-  .gh, .gu                    { color: $cyber-muted; font-weight: 700; }
+  .c, .cd, .cm, .c1, .cs, .cp { color: #6d6a60; font-style: italic; } // comments
+  .err, .gr                   { color: $chalk-pink; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv { color: $chalk-yellow; font-weight: 700; }
+  .o, .ow                     { color: $chalk-dim; }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: $chalk-green; }
+  .m, .mf, .mh, .mi, .mo, .il { color: $chalk-violet; }
+  .n, .na, .nb, .bp, .nl, .nn, .nx, .py, .nv, .vc, .vg, .vi { color: $chalk; }
+  .nc, .nd, .ne, .nf, .fm     { color: $chalk-blue; }
+  .nt                         { color: $chalk-yellow; }
+  .no, .nb                    { color: #d8ab7a; }
+  .gd                         { color: $chalk-pink;  background-color: rgba($chalk-pink, 0.12); }
+  .gi                         { color: $chalk-green; background-color: rgba($chalk-green, 0.12); }
+  .gh, .gu                    { color: $chalk-dim; font-weight: 700; }
   .gs                         { font-weight: 700; }
   .ge                         { font-style: italic; }
-  .w                          { color: $cyber-border; }
+  .w                          { color: $chalk-line; }
 }
 
 // ---------------------------------------------------------------------------
 // Header
 // ---------------------------------------------------------------------------
 
+// No frame — the slate runs edge to edge. The header is separated from the
+// content by a chalk hairline alone.
 .site-header {
-  background-color: rgba($cyber-bg, 0.92);
+  background-color: rgba($board, 0.92);
   backdrop-filter: blur(6px);
-  border-top: 3px solid $cyber-primary;
-  border-bottom: 1px solid $cyber-border;
+  // minima draws a 5px `$grey-color-dark` rule across the top of the header.
+  // That variable is mapped to $chalk-white here, so left alone it paints a
+  // white bar above the board — this has to be turned off explicitly.
+  border-top: 0;
+  border-bottom: 1px solid $chalk-line;
   min-height: 58px;
   position: relative;
 }
 
+// The site name, written up in the corner of the board. The `~/` shell prompt
+// that used to sit in front of it is gone with the rest of the terminal
+// furniture — a blackboard has no working directory.
 .site-title,
 .site-title:visited {
-  color: $cyber-primary;
+  color: $chalk-white;
   border-bottom: 0;
   font-family: $title;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: lowercase;
-
-  // Terminal prompt in front of the site name.
-  &::before {
-    content: "~/";
-    color: rgba($cyber-primary, 0.5);
-    margin-right: 0.15em;
-  }
+  text-shadow:
+    0 0 1px rgba($chalk-white, 0.45),
+    0 0 16px rgba($chalk-white, 0.09);
 
   &:hover {
     background: none;
@@ -259,18 +334,18 @@ pre {
 
   .page-link {
     border-bottom: 0;
-    color: $cyber-muted;
+    color: $chalk-dim;
     font-size: 0.8125rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 
     &:hover {
       background: none;
-      color: $cyber-primary;
+      color: $chalk-yellow;
     }
   }
 
-  .menu-icon > svg path { fill: $cyber-primary; }
+  .menu-icon > svg path { fill: $chalk-yellow; }
 
   // Social links (_includes/social.html), icon-only, after the page links.
   .nav-social {
@@ -280,7 +355,7 @@ pre {
     list-style: none;
     margin: 0 0 0 20px;
     padding-left: 0.85rem;
-    border-left: 1px solid $cyber-border;
+    border-left: 1px solid $chalk-line;
     vertical-align: middle;
 
     li { line-height: 0; }
@@ -292,7 +367,7 @@ pre {
       &:hover {
         background: none;
 
-        .svg-icon { fill: $cyber-primary; }
+        .svg-icon { fill: $chalk-yellow; }
       }
     }
 
@@ -315,14 +390,14 @@ pre {
   .site-nav {
     top: 5px;
     right: $spacing-unit * 0.5;
-    background-color: $cyber-surface;
-    border: 1px solid $cyber-border;
+    background-color: $board-panel;
+    border: 1px solid $chalk-line;
     border-radius: 6px;
     line-height: 1.5;
     text-align: left;
     // The panel overlaps the page below it when open; keep it on top.
     z-index: 3;
-    -webkit-tap-highlight-color: rgba($cyber-primary, 0.15);
+    -webkit-tap-highlight-color: rgba($chalk-yellow, 0.15);
 
     // 48px square trigger. The label is the hit area, so it carries the size
     // and centres the icon rather than the icon padding itself into place.
@@ -353,7 +428,7 @@ pre {
     input:checked ~ .trigger {
       min-width: 190px;
       padding-bottom: 0;
-      border-top: 1px solid $cyber-border;
+      border-top: 1px solid $chalk-line;
     }
 
     .page-link {
@@ -362,16 +437,16 @@ pre {
       min-height: 48px;
       margin-left: 0;
       padding: 0 1rem;
-      color: $cyber-text;
+      color: $chalk;
       font-size: 0.875rem;
 
       &:not(:last-child) {
-        border-bottom: 1px solid $cyber-border;
+        border-bottom: 1px solid $chalk-line;
       }
 
       &:active {
-        background-color: rgba($cyber-primary, 0.12);
-        color: $cyber-primary;
+        background-color: rgba($chalk-yellow, 0.12);
+        color: $chalk-yellow;
       }
     }
 
@@ -384,7 +459,7 @@ pre {
       margin: 0;
       padding: 0;
       border-left: 0;
-      border-top: 1px solid $cyber-border;
+      border-top: 1px solid $chalk-line;
 
       li {
         flex: 1;
@@ -399,9 +474,9 @@ pre {
         width: 100%;
 
         &:active {
-          background-color: rgba($cyber-primary, 0.12);
+          background-color: rgba($chalk-yellow, 0.12);
 
-          .svg-icon { fill: $cyber-primary; }
+          .svg-icon { fill: $chalk-yellow; }
         }
       }
 
@@ -419,36 +494,40 @@ pre {
 
 .page-heading,
 .post-list-heading {
-  color: $cyber-primary;
+  color: $chalk-white;
   font-size: 1.5rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
+  // Underlined by hand, twice — the second pass slightly offset, the way you
+  // actually end up underlining something on a board.
   &::after {
-    content: "";
-    display: block;
-    width: 48px;
-    height: 2px;
-    margin-top: 0.5rem;
-    background-color: $cyber-primary;
+    @include chalk-rule($chalk-yellow, 8px, 0.7);
+    width: 132px;
+    margin-top: 0.35rem;
   }
 }
 
+// Dates and bylines, written small. The `$ ` shell prompt that prefixed these
+// is gone with the rest of the terminal furniture; an em dash is what you'd
+// actually chalk in front of a date.
 .post-meta {
-  color: $cyber-muted;
+  color: $chalk-dim;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
 
   &::before {
-    content: "$ ";
-    color: $cyber-accent;
+    content: "— ";
+    color: rgba($chalk-dim, 0.8);
   }
 }
 
 .post-list {
   > li {
-    background-color: rgba($cyber-surface, 0.6);
-    border: 1px solid $cyber-border;
+    background-color: rgba($board-panel, 0.55);
+    // Dashed, because a box drawn around something on a board is a freehand
+    // outline, not a printed rule.
+    border: 1px dashed rgba($chalk-white, 0.16);
     border-left: 3px solid transparent;
     border-radius: 4px;
     margin-bottom: $spacing-unit * 0.5;
@@ -456,8 +535,9 @@ pre {
     transition: border-color 0.15s ease, background-color 0.15s ease;
 
     &:hover {
-      background-color: $cyber-surface;
-      border-left-color: $cyber-primary;
+      background-color: $board-panel;
+      border-color: rgba($chalk-white, 0.28);
+      border-left-color: $chalk-yellow;
     }
 
     > h3 { margin-bottom: 0.35rem; }
@@ -466,7 +546,7 @@ pre {
     // render in full. Control how much lands here by moving `<!--more-->` in
     // the post, or with `excerpt_separator` in _config.yml.
     > p {
-      color: rgba($cyber-text, 0.75);
+      color: rgba($chalk, 0.75);
       font-size: 0.9375rem;
       line-height: 1.6;
       margin-bottom: 0;
@@ -506,10 +586,10 @@ pre {
 // full border of its own.
 .post-tag {
   display: inline-block;
-  background-color: rgba($cyber-accent, 0.1);
-  border: 1px solid rgba($cyber-accent, 0.3);
+  background-color: rgba($chalk-yellow, 0.1);
+  border: 1px dashed rgba($chalk-yellow, 0.4);
   border-radius: 3px;
-  color: $cyber-accent;
+  color: $chalk-yellow;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   line-height: 1.6;
@@ -517,14 +597,14 @@ pre {
 
   &::before {
     content: "#";
-    color: rgba($cyber-accent, 0.55);
+    color: rgba($chalk-yellow, 0.55);
   }
 
-  &:visited { color: $cyber-accent; }
+  &:visited { color: $chalk-yellow; }
 
   &:hover {
-    background-color: rgba($cyber-accent, 0.22);
-    border-color: $cyber-accent;
+    background-color: rgba($chalk-yellow, 0.22);
+    border-color: $chalk-yellow;
     color: #fff;
 
     &::before { color: #fff; }
@@ -541,20 +621,27 @@ pre {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba($cyber-surface, 0.6);
-  border: 1px solid $cyber-border;
+  background-color: rgba($board-panel, 0.6);
+  border: 1px dashed rgba($chalk-white, 0.18);
   border-radius: 4px;
   margin-bottom: $spacing-unit * 0.5;
   padding: 0 0.85rem;
   transition: border-color 0.15s ease;
 
-  &:focus-within { border-color: rgba($cyber-primary, 0.6); }
+  &:focus-within { border-color: rgba($chalk-yellow, 0.65); }
 
-  // Terminal prompt, matching the one on the site title and the post dates.
+  // A magnifier sketched in chalk, replacing the `$` shell prompt that used to
+  // sit here. Masked rather than drawn as a background image, so it takes the
+  // chalk colour from the palette.
   &::before {
-    content: "$";
-    color: $cyber-accent;
+    content: "";
     flex: none;
+    width: 15px;
+    height: 15px;
+    background-color: $chalk-dim;
+    $glass: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.8'/%3E%3Cpath d='M15.6 15.6 L21 21'/%3E%3C/svg%3E");
+    -webkit-mask: $glass no-repeat center / contain;
+    mask: $glass no-repeat center / contain;
   }
 
   // The keyboard hint is decoration; it goes away where there is no keyboard to
@@ -562,9 +649,9 @@ pre {
   &::after {
     content: "/";
     flex: none;
-    border: 1px solid $cyber-border;
+    border: 1px solid $chalk-line;
     border-radius: 3px;
-    color: $cyber-muted;
+    color: $chalk-dim;
     font-size: 0.6875rem;
     line-height: 1.4;
     padding: 0 0.35em;
@@ -598,12 +685,12 @@ pre {
   padding: 0.65rem 0;
   background: none;
   border: 0;
-  color: $cyber-text;
+  color: $chalk;
   font-family: $body;
   font-size: 0.9375rem;
-  caret-color: $cyber-primary;
+  caret-color: $chalk-yellow;
 
-  &::placeholder { color: $cyber-muted; }
+  &::placeholder { color: $chalk-dim; }
   &:focus { outline: none; } // .search carries the focus ring for the whole row
 
   // Safari draws its own clear button and reserves space for it; the Escape key
@@ -612,7 +699,7 @@ pre {
 }
 
 .search-status {
-  color: $cyber-muted;
+  color: $chalk-dim;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
   margin-bottom: $spacing-unit * 0.5;
@@ -620,10 +707,11 @@ pre {
   &:empty { display: none; }
 }
 
+// A match, scrubbed over with the side of a stick of chalk.
 .search-results mark {
-  background-color: rgba($cyber-primary, 0.22);
+  background-color: rgba($chalk-yellow, 0.26);
   border-radius: 2px;
-  color: #fff;
+  color: $chalk-white;
   padding: 0 0.1em;
 }
 
@@ -658,40 +746,40 @@ pre {
   // Comfortably tappable on a phone without looking oversized on a desktop.
   min-height: 44px;
   padding: 0 0.85rem;
-  background-color: rgba($cyber-surface, 0.6);
-  border: 1px solid $cyber-border;
-  border-bottom: 1px solid $cyber-border; // beat the global `a` border rule
+  background-color: rgba($board-panel, 0.6);
+  border: 1px dashed rgba($chalk-yellow, 0.32);
+  border-bottom: 1px dashed rgba($chalk-yellow, 0.32); // beat the global `a` border rule
   border-radius: 4px;
-  color: $cyber-accent;
+  color: $chalk-yellow;
   font-size: 0.875rem;
   letter-spacing: 0.04em;
 
   &::before {
     content: "#";
-    color: rgba($cyber-accent, 0.55);
+    color: rgba($chalk-yellow, 0.55);
     margin-right: -0.5rem; // cancels the flex gap, so it reads as "#name"
   }
 
-  &:visited { color: $cyber-accent; }
+  &:visited { color: $chalk-yellow; }
 
   &:hover,
   &:active {
-    background-color: rgba($cyber-accent, 0.12);
-    border-color: rgba($cyber-accent, 0.6);
+    background-color: rgba($chalk-yellow, 0.12);
+    border-color: rgba($chalk-yellow, 0.6);
     color: #fff;
 
     &::before { color: #fff; }
 
     .tag-cloud-count {
-      border-color: rgba($cyber-accent, 0.6);
+      border-color: rgba($chalk-yellow, 0.6);
       color: #fff;
     }
   }
 }
 
 .tag-cloud-count {
-  border-left: 1px solid $cyber-border;
-  color: $cyber-muted;
+  border-left: 1px solid $chalk-line;
+  color: $chalk-dim;
   font-size: 0.75rem;
   line-height: 1;
   padding-left: 0.5rem;
@@ -704,33 +792,35 @@ pre {
 
   &::before {
     content: "#";
-    color: rgba($cyber-primary, 0.45);
+    color: rgba($chalk-yellow, 0.6);
   }
 }
 
 .tag-count {
-  color: $cyber-muted;
+  color: $chalk-dim;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
   margin-top: -0.5rem;
 }
 
 .post-list-date {
-  color: $cyber-muted;
+  color: $chalk-dim;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
   margin-left: auto; // holds the date right when the tags wrap to their own line
   white-space: nowrap;
 
   &::before {
-    content: "$ ";
-    color: $cyber-accent;
+    content: "— ";
+    color: rgba($chalk-dim, 0.8);
   }
 }
 
+// Post titles in a list. White chalk, matching every other heading — the yellow
+// is reserved for links you follow inline in prose.
 .post-link {
   border-bottom: 0;
-  color: $cyber-primary;
+  color: $chalk-white;
   display: block;
   font-size: 1.75rem;
   margin-top: 0.25rem;
@@ -738,18 +828,32 @@ pre {
   &:hover {
     background: none;
     color: #fff;
+    text-shadow:
+      0 0 1px rgba($chalk-white, 0.6),
+      0 0 18px rgba($chalk-white, 0.18);
   }
 }
 
 .post-title {
-  color: $cyber-primary;
+  color: $chalk-white;
   letter-spacing: 0;
   line-height: 1.15;
 }
 
+// The post title sits over a full-width chalk rule rather than a printed
+// hairline — it is the biggest thing on the board, so it gets the boldest line.
 .post-header {
-  border-bottom: 1px solid $cyber-border;
+  border-bottom: 0;
   padding-bottom: $spacing-unit * 0.5;
+  position: relative;
+
+  &::after {
+    @include chalk-rule($chalk-white, 9px, 0.32);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 
 .post-content {
@@ -769,11 +873,11 @@ pre {
   gap: 0.75rem;
   margin: $spacing-unit 0;
   padding-top: $spacing-unit * 0.5;
-  border-top: 1px solid $cyber-border;
+  border-top: 1px solid $chalk-line;
 }
 
 .pagination-item {
-  border: 1px solid $cyber-border;
+  border: 1px dashed rgba($chalk-white, 0.18);
   border-radius: 4px;
   font-size: 0.8125rem;
   letter-spacing: 0.06em;
@@ -783,25 +887,25 @@ pre {
 }
 
 a.pagination-item {
-  background-color: rgba($cyber-surface, 0.6);
-  border-bottom: 1px solid $cyber-border; // beat the global `a` border rule
-  color: $cyber-primary;
+  background-color: rgba($board-panel, 0.6);
+  border-bottom: 1px dashed rgba($chalk-white, 0.18); // beat the global `a` border rule
+  color: $chalk-yellow;
 
   &:hover {
-    background-color: rgba($cyber-primary, 0.12);
-    border-color: $cyber-primary;
+    background-color: rgba($chalk-yellow, 0.12);
+    border-color: $chalk-yellow;
     color: #fff;
   }
 }
 
 .pagination-item.disabled {
-  color: $cyber-muted;
+  color: $chalk-dim;
   opacity: 0.4;
   cursor: default;
 }
 
 .pagination-progress {
-  color: $cyber-muted;
+  color: $chalk-dim;
   font-size: 0.8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -817,15 +921,17 @@ a.pagination-item {
 // Tables
 // ---------------------------------------------------------------------------
 
+// A table is ruled out on the board with a straight edge, so unlike the cards
+// its lines stay solid — this is the one thing you wouldn't draw freehand.
 table {
-  border: 1px solid $cyber-border;
-  color: $cyber-text;
+  border: 1px solid $chalk-line;
+  color: $chalk;
 
-  th, td { border: 1px solid $cyber-border; }
+  th, td { border: 1px solid $chalk-line; }
 
   th {
-    background-color: $cyber-surface;
-    color: $cyber-primary;
+    background-color: $board-panel;
+    color: $chalk-white;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -833,7 +939,7 @@ table {
 
   td { background-color: transparent; }
 
-  tr:nth-child(even) td { background-color: rgba($cyber-surface, 0.5); }
+  tr:nth-child(even) td { background-color: rgba($board-panel, 0.5); }
 }
 
 // ---------------------------------------------------------------------------
@@ -841,30 +947,30 @@ table {
 // ---------------------------------------------------------------------------
 
 .site-footer {
-  background-color: rgba($cyber-surface, 0.5);
-  border-top: 1px solid $cyber-border;
-  color: $cyber-muted;
+  background-color: rgba($board-panel, 0.5);
+  border-top: 1px solid $chalk-line;
+  color: $chalk-dim;
   font-size: 0.875rem;
 
   a, a:visited {
-    color: $cyber-muted;
+    color: $chalk-dim;
     border-bottom: 0;
 
-    &:hover { background: none; color: $cyber-primary; }
+    &:hover { background: none; color: $chalk-yellow; }
   }
 }
 
 // Carries the author's name, so it keeps the capitalisation as written —
 // minima's copy lowercased it because it printed the site title here.
 .footer-heading {
-  color: $cyber-primary;
+  color: $chalk-white;
   font-size: 1.25rem;
   letter-spacing: 0.04em;
   text-transform: none;
 }
 
 .contact-list {
-  color: $cyber-muted;
+  color: $chalk-dim;
 }
 
 // The footer is a single column now that the social links moved to the nav and
@@ -886,10 +992,10 @@ table {
 .footer-col-1 { flex: 1 1 300px; }
 
 .svg-icon {
-  fill: $cyber-muted;
+  fill: $chalk-dim;
   transition: fill 0.15s ease;
 
-  a:hover & { fill: $cyber-primary; }
+  a:hover & { fill: $chalk-yellow; }
 }
 
 // ---------------------------------------------------------------------------
@@ -897,12 +1003,12 @@ table {
 // ---------------------------------------------------------------------------
 
 .rss-subscribe {
-  color: $cyber-muted;
+  color: $chalk-dim;
   font-size: 0.875rem;
 }
 
 img {
-  border: 1px solid $cyber-border;
+  border: 1px solid $chalk-line;
   border-radius: 4px;
   max-width: 100%;
 }

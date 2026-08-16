@@ -6,22 +6,29 @@
   would be published as a page. This is a build input, not a page.
 
   Regenerate src/assets/og-default.png with tools/build-og-card.sh. The palette
-  below is copied from src/assets/main.scss — keep the two in step by hand.
+  and the fonts below are copied from src/assets/main.scss and
+  src/_includes/head.html — keep them in step by hand.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Same two families the site loads. build-og-card.sh renders this from a
+     file:// URL, so the fetch is live: the script passes a virtual-time budget
+     to make sure both faces have arrived before it takes the screenshot. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap">
 <style>
   /* Open Graph's recommended size. 1.91:1, which is what X, LinkedIn, Slack,
      Discord and iMessage all crop to. */
   :root {
-    --bg:      #0b0e13;
-    --surface: #131820;
-    --border:  #232b36;
-    --text:    #c9d1d9;
-    --muted:   #7d8899;
-    --primary: #57cc99;
-    --accent:  #e1b07e;
+    --board:       #0d0d0c;
+    --board-panel: #171715;
+    --chalk-line:  #35342e;
+    --chalk:       #dcd8cd;
+    --chalk-dim:   #99948a;
+    --chalk-white: #f6f2e7;
+    --chalk-yellow:#f2d88a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,42 +37,51 @@
     width: 1200px;
     height: 630px;
     overflow: hidden;
-    background-color: var(--bg);
-    /* Same faint terminal grid the site draws on <html>. */
+    background-color: var(--board);
+    /* The same slate the site draws on <html>: chalk-dust bloom, an eraser
+       sweep across the middle, then fractal grain over the top. Scaled up for
+       a 1200px canvas. */
     background-image:
-      linear-gradient(rgba(87, 204, 153, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(87, 204, 153, 0.045) 1px, transparent 1px);
-    background-size: 48px 48px;
-    color: var(--text);
-    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      radial-gradient(ellipse 55% 40% at 18% 12%, rgba(246, 242, 231, 0.05), transparent 72%),
+      radial-gradient(ellipse 45% 35% at 85% 78%, rgba(246, 242, 231, 0.035), transparent 70%),
+      repeating-linear-gradient(2deg,
+        rgba(246, 242, 231, 0.014) 0 5px,
+        transparent 5px 18px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)' opacity='0.055'/%3E%3C/svg%3E");
+    background-size: cover, cover, 100% 55%, 220px 220px;
+    background-position: 0 0, 0 0, center 40%, 0 0;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    color: var(--chalk);
+    font-family: "DM Sans", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* The site header's 3px top rule, scaled up for a 1200px-wide canvas. */
+  /* No frame — the slate runs to the edge of the canvas, same as the site. */
   .frame {
     width: 100%;
     height: 100%;
-    border-top: 8px solid var(--primary);
     padding: 84px 90px 76px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
+  /* White chalk, with the same bloom the site puts on its headings. */
   .title {
-    color: var(--primary);
-    font-size: 92px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1;
+    color: var(--chalk-white);
+    font-family: "Caveat Brush", cursive;
+    font-size: 116px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.1;
+    text-shadow:
+      0 0 2px rgba(246, 242, 231, 0.4),
+      0 0 30px rgba(246, 242, 231, 0.1);
   }
 
-  /* Matches the ~/ prompt glyph on the site title. */
-  .title .prompt { color: rgba(87, 204, 153, 0.45); }
-
   .tagline {
-    margin-top: 34px;
-    color: var(--text);
+    margin-top: 30px;
+    color: var(--chalk);
     font-size: 34px;
     line-height: 1.5;
     max-width: 900px;
@@ -77,40 +93,43 @@
     justify-content: space-between;
     gap: 32px;
     padding-top: 30px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--chalk-line);
   }
 
   .domain {
-    color: var(--muted);
+    color: var(--chalk-dim);
     font-size: 26px;
     letter-spacing: 0.04em;
   }
 
+  /* Matches the em dash the site chalks in front of a date. */
   .domain::before {
-    content: "$ ";
-    color: var(--accent);
+    content: "— ";
+    color: rgba(153, 148, 138, 0.8);
   }
 
-  /* Tag chips, same treatment as .post-tag on the site. */
+  /* Tag chips, same treatment as .post-tag on the site — yellow chalk, the one
+     colour the site uses for anything you can click, drawn freehand hence the
+     dashed outline. */
   .tags { display: flex; gap: 14px; }
 
   .tag {
-    background-color: rgba(225, 176, 126, 0.1);
-    border: 1px solid rgba(225, 176, 126, 0.3);
+    background-color: rgba(242, 216, 138, 0.1);
+    border: 1px dashed rgba(242, 216, 138, 0.4);
     border-radius: 5px;
-    color: var(--accent);
+    color: var(--chalk-yellow);
     font-size: 24px;
     letter-spacing: 0.04em;
     padding: 6px 14px;
   }
 
-  .tag::before { content: "#"; color: rgba(225, 176, 126, 0.55); }
+  .tag::before { content: "#"; color: rgba(242, 216, 138, 0.55); }
 </style>
 </head>
 <body>
   <div class="frame">
     <div>
-      <div class="title"><span class="prompt">~/</span>benhurott</div>
+      <div class="title">benhurott</div>
       <div class="tagline">
         Application security, offensive tooling, and building software with AI
         agents you can actually trust.
