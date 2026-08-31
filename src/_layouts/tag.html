@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{%- comment -%}
+Archive for a single tag. Rendered for the pages that _plugins/tag_pages.rb
+generates, which supply `page.tag` and `page.posts`.
+{%- endcomment -%}
+<div class="home">
+  <h1 class="page-heading tag-heading">{{ page.tag | escape }}</h1>
+
+  <p class="tag-count">
+    {{ page.posts.size }} post{% if page.posts.size != 1 %}s{% endif %}
+    &middot; <a href="{{ '/tags/' | relative_url }}">all tags</a>
+  </p>
+
+  <ul class="post-list">
+    {%- for post in page.posts -%}
+      {%- include post-card.html post=post -%}
+    {%- endfor -%}
+  </ul>
+</div>

@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+{%- comment -%}
+  Project-local override of minima's `_layouts/home.html`. The theme gem is not
+  modified — Jekyll resolves layouts from the site before the theme.
+
+  Difference from the theme's version: each entry is title + excerpt, with the
+  post's tags and its date sharing the foot of the card — tags left, date right
+  — instead of the date sitting above the title. That card markup lives in
+  _includes/post-card.html, because the per-tag archives render the same thing.
+{%- endcomment -%}
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- else -%}
+    {%- comment -%}
+      Every page needs exactly one h1, and the home page has no visible heading
+      to hang it on — the site title in the nav is an <a>, not a heading, and
+      "Posts" below is an h2. So the h1 is here, off-screen: it reaches crawlers
+      and screen readers without putting a redundant title above the search bar.
+
+      It carries site.title + site.tagline rather than just the site name,
+      because on its own the name says nothing about what the site is.
+    {%- endcomment -%}
+    <h1 class="visually-hidden">
+      {{- site.title | escape }} — {{ site.tagline | escape -}}
+    </h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- assign posts = paginator.posts | default: site.posts -%}
+
+  {%- if posts.size > 0 -%}
+    {%- comment -%}
+      Search over every post on the site, not just the page below it. While a
+      query is active, assets/search.js puts `is-searching` on `.home` and the
+      browse list, its heading and the pager all hide — see main.scss.
+    {%- endcomment -%}
+    {%- include search.html -%}
+
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <ul class="post-list browse-list">
+      {%- for post in posts -%}
+        {%- include post-card.html post=post -%}
+      {%- endfor -%}
+    </ul>
+
+    {%- if paginator and paginator.total_pages > 1 -%}
+      <nav class="pagination" role="navigation" aria-label="Post pages">
+        {%- if paginator.previous_page -%}
+          <a class="pagination-item prev" href="{{ paginator.previous_page_path | relative_url }}">&larr; newer</a>
+        {%- else -%}
+          <span class="pagination-item prev disabled">&larr; newer</span>
+        {%- endif -%}
+
+        <span class="pagination-progress">
+          page {{ paginator.page }} / {{ paginator.total_pages }}
+        </span>
+
+        {%- if paginator.next_page -%}
+          <a class="pagination-item next" href="{{ paginator.next_page_path | relative_url }}">older &rarr;</a>
+        {%- else -%}
+          <span class="pagination-item next disabled">older &rarr;</span>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+
+    <p class="rss-subscribe">
+      subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a>
+    </p>
+  {%- endif -%}
+</div>

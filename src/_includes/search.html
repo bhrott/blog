@@ -1,0 +1,28 @@
+{%- comment -%}
+Search bar for the post list. Rendered on the home page (_layouts/home.html),
+above the cards it filters.
+
+The whole block ships `hidden` and assets/search.js unhides it, so a visitor
+without JavaScript never sees an input that cannot do anything — they still get
+the paginated list and the tag archives.
+
+The index URL rides on `data-search` because search.js is a plain static asset
+(no Liquid), and it is the only thing in there that needs to know the baseurl.
+{%- endcomment -%}
+<form class="search" role="search" data-search="{{ '/search.json' | relative_url }}" hidden>
+  <label class="search-label" for="search-input">search</label>
+  <input
+    type="search"
+    id="search-input"
+    class="search-input"
+    placeholder="title, tag or keyword"
+    autocomplete="off"
+    spellcheck="false"
+    aria-describedby="search-status">
+</form>
+
+<p class="search-status" id="search-status" data-search-status role="status" aria-live="polite"></p>
+
+<ul class="post-list search-results" data-search-results hidden></ul>
+
+<script src="{{ '/assets/search.js' | relative_url }}" defer></script>

@@ -1,0 +1,146 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Ben-Hur Santos Ott
+# A hash, not a string, so jekyll-seo-tag can emit twitter:creator alongside the
+# author name. Anything reading this in a template must use `site.author.name`
+# — see _includes/footer.html.
+author:
+  name: Ben-Hur Santos Ott
+  twitter: benhurott
+description: >- # this means to ignore newlines until "baseurl:"
+  I'm just a guy who loves code, security, and agents.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://benhurott.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: benhurott
+github_username:  bhrott
+# minima builds this as youtube.com/<value>, so the "@" handle prefix is part of
+# the value. It gets URL-escaped to %40, which YouTube redirects correctly.
+youtube_username: "@benhurott"
+linkedin_username: benhurott
+
+# ---------------------------------------------------------------------------
+# SEO
+# ---------------------------------------------------------------------------
+# Almost everything here is read by jekyll-seo-tag, which minima's head.html
+# invokes via `{% seo %}`. Inspect the result with:
+#   bundle exec jekyll build && sed -n '1,40p' _site/index.html
+
+# Appended to the site title on the home page only, giving the browser title
+# "Ben-Hur Santos Ott | <tagline>". Interior pages get
+# "<page title> | Ben-Hur Santos Ott".
+tagline: Software Security
+
+# Feeds both <html lang> (minima) and og:locale (seo-tag). It must be written
+# with a HYPHEN: that is the valid BCP 47 form for the lang attribute, and
+# seo-tag converts it to the underscored `en_US` that og:locale wants. Writing
+# `en_US` here produces an invalid <html lang="en_US">.
+lang: en-US
+
+# twitter:site on every page, plus the card format. `summary_large_image` is
+# what turns a link preview into the full-width 1200x630 card instead of a
+# thumbnail — it only applies on pages that actually resolve an image, which
+# the `defaults` block below guarantees.
+twitter:
+  username: benhurott
+  card: summary_large_image
+
+# Feeds the schema.org Person node and its `sameAs` links. NOTE: seo-tag only
+# emits `sameAs` on the home page and /about/ — that is by design, those are the
+# pages an entity claim belongs on.
+social:
+  name: Ben-Hur Santos Ott
+  type: Person
+  links:
+    - https://github.com/bhrott
+    - https://www.twitter.com/benhurott
+    - https://www.linkedin.com/in/benhurott
+    - https://youtube.com/@benhurott
+
+# Build settings
+theme: minima
+
+# Front matter applied to every page and post that does not set it itself.
+defaults:
+  - scope:
+      path: "" # everything
+    values:
+      # Site-wide og:image / twitter:image. seo-tag reads `image` per page only,
+      # so a default here is the only way to make it site-wide. Any post can
+      # override it with its own `image:` in front matter.
+      #
+      # The file is generated from tools/og-card.html — run tools/build-og-card.sh
+      # after editing that, and commit the PNG.
+      image:
+        path: /assets/og-default.png
+        width: 1200
+        height: 630
+        alt: "benhurott — application security, offensive tooling, and secure AI-assisted development"
+
+# Nav contents and order. This MUST stay explicit: minima's default is "every
+# page that has a title", and _plugins/tag_pages.rb generates one titled page
+# per tag — without this the nav would list every tag on the site.
+header_pages:
+  - about.markdown
+  - tags.html
+
+# Everything before the <!--more--> marker becomes post.excerpt (shown on the
+# home page). Jekyll's default is a blank line, which cuts after the first
+# paragraph. NOTE: a post with no <!--more--> marker has *no* separator to cut
+# on, so its entire body becomes the excerpt — add the marker to every post.
+excerpt_separator: "<!--more-->"
+
+# Pagination (jekyll-paginate). Only takes effect on the page that uses the
+# `paginator` variable, and that page MUST be index.html — the plugin ignores
+# Markdown files, which is why the home page is index.html and not index.markdown.
+paginate: 5
+paginate_path: "/page:num/" # page 1 stays at /, page 2 is /page2/, etc.
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  # Writes /sitemap.xml (every page, post and tag archive) and /robots.txt.
+  # NOTE: it only generates robots.txt when the site has none of its own — this
+  # site ships one at robots.txt, so that file wins and has to name the sitemap
+  # itself.
+  - jekyll-sitemap
+  # Already loaded as a minima dependency; listed so the <head> meta tags do not
+  # depend on the theme continuing to pull it in.
+  - jekyll-seo-tag
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
