@@ -9,7 +9,7 @@ description: >-
 
 ## whoami
 
-I'm Ben-Hur Santos Ott. I write about Application Security, DevSecOps, and the
+I'm Ben-Hur Santos Ott. I write about software security (aka AppSec, DevSecOps, etc), and the
 awkward new problem of securing systems that take instructions from strangers
 and act on them, we like to call them "AI Agents".
 
@@ -23,6 +23,6 @@ Everything is filed by [tag](/tags/), and there's an
 ## ls -a
 
 Code on [GitHub](https://github.com/bhrott), shorter thoughts on
-[X](https://www.twitter.com/bhrott), work history on
+[X](https://www.twitter.com/benhurott), work history on
 [LinkedIn](https://www.linkedin.com/in/benhurott), and video on
 [YouTube](https://youtube.com/@benhurott).

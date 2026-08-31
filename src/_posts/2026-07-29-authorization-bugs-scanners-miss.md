@@ -76,7 +76,7 @@ Field-level is the sneakiest. The endpoint is legitimately yours, the object is
 legitimately yours, and you simply include one extra key in the JSON body:
 
 ```http
-PATCH /api/users/me
+PATCH /api/users/me HTTP/1.1
 Content-Type: application/json
 
 {"display_name": "Mallory", "role": "admin", "tenant_id": 1}

@@ -270,7 +270,16 @@ pre {
 // this replaces it.
 .highlight {
   .c, .cd, .cm, .c1, .cs, .cp { color: #6d6a60; font-style: italic; } // comments
-  .err, .gr                   { color: $chalk-pink; }
+  // `.err` is not a semantic token — Rouge emits it whenever a lexer cannot
+  // match, and a lexer that fails on the first line wraps the *entire* listing
+  // in it. minima paints it dark red on a light pink wash, which on this board
+  // turns any such block into an unreadable stripe, so a failed lex degrades to
+  // plain chalk instead. The background has to be cleared explicitly: minima
+  // sets one, and these rules only override the properties they name.
+  .err                        { color: inherit; background-color: transparent; }
+  // `.gr` (generic error, i.e. an error line inside quoted output) is a real
+  // authorial choice and keeps the pink.
+  .gr                         { color: $chalk-pink; }
   .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv { color: $chalk-yellow; font-weight: 700; }
   .o, .ow                     { color: $chalk-dim; }
   .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: $chalk-green; }
@@ -281,6 +290,12 @@ pre {
   .no, .nb                    { color: #d8ab7a; }
   .gd                         { color: $chalk-pink;  background-color: rgba($chalk-pink, 0.12); }
   .gi                         { color: $chalk-green; background-color: rgba($chalk-green, 0.12); }
+  // The intra-line diff marker inside a +/- line. minima gives it near-white
+  // `#faa`/`#afa` fills with black text, which is the one thing on the board
+  // brighter than the headings — it gets the same treatment, one step stronger
+  // than the line it sits in.
+  .gd .x                      { color: $chalk-pink;  background-color: rgba($chalk-pink, 0.25); }
+  .gi .x                      { color: $chalk-green; background-color: rgba($chalk-green, 0.25); }
   .gh, .gu                    { color: $chalk-dim; font-weight: 700; }
   .gs                         { font-weight: 700; }
   .ge                         { font-style: italic; }
@@ -940,6 +955,34 @@ table {
   td { background-color: transparent; }
 
   tr:nth-child(even) td { background-color: rgba($board-panel, 0.5); }
+}
+
+// ---------------------------------------------------------------------------
+// Video embeds
+// ---------------------------------------------------------------------------
+
+// Written by _includes/video.html. The iframe arrives with no width or height
+// of its own, so the wrapper is what gives it a shape: `aspect-ratio` reserves
+// the 16:9 box up front, which keeps the page from reflowing when the player
+// finally loads (the old padding-bottom: 56.25% trick, minus the trick).
+//
+// Framed like a listing rather than like a card — a video is something pinned
+// to the board and pointed at, so it gets a ruled edge, not a freehand one.
+.video-embed {
+  aspect-ratio: 16 / 9;
+  background-color: $board-panel;
+  border: 1px solid $chalk-line;
+  border-radius: 4px;
+  margin-bottom: $spacing-unit;
+  overflow: hidden;
+  width: 100%;
+
+  iframe {
+    border: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 // ---------------------------------------------------------------------------

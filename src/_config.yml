@@ -18,18 +18,18 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: benhurott
+title: Ben-Hur Santos Ott
 # A hash, not a string, so jekyll-seo-tag can emit twitter:creator alongside the
 # author name. Anything reading this in a template must use `site.author.name`
 # — see _includes/footer.html.
 author:
   name: Ben-Hur Santos Ott
-  twitter: bhrott
+  twitter: benhurott
 description: >- # this means to ignore newlines until "baseurl:"
   I'm just a guy who loves code, security, and agents.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://benhurott.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: bhrott
+twitter_username: benhurott
 github_username:  bhrott
 # minima builds this as youtube.com/<value>, so the "@" handle prefix is part of
 # the value. It gets URL-escaped to %40, which YouTube redirects correctly.
@@ -43,11 +43,10 @@ linkedin_username: benhurott
 # invokes via `{% seo %}`. Inspect the result with:
 #   bundle exec jekyll build && sed -n '1,40p' _site/index.html
 
-# Appended to the site title on the home page only: "benhurott | <tagline>".
-# Interior pages get "<page title> | benhurott", so this is the one shot at
-# telling a search result what the whole site is about.
-tagline: >-
-  Application security, offensive tooling, and secure AI-assisted development
+# Appended to the site title on the home page only, giving the browser title
+# "Ben-Hur Santos Ott | <tagline>". Interior pages get
+# "<page title> | Ben-Hur Santos Ott".
+tagline: Software Security
 
 # Feeds both <html lang> (minima) and og:locale (seo-tag). It must be written
 # with a HYPHEN: that is the valid BCP 47 form for the lang attribute, and
@@ -60,7 +59,7 @@ lang: en-US
 # thumbnail — it only applies on pages that actually resolve an image, which
 # the `defaults` block below guarantees.
 twitter:
-  username: bhrott
+  username: benhurott
   card: summary_large_image
 
 # Feeds the schema.org Person node and its `sameAs` links. NOTE: seo-tag only
@@ -71,7 +70,7 @@ social:
   type: Person
   links:
     - https://github.com/bhrott
-    - https://www.twitter.com/bhrott
+    - https://www.twitter.com/benhurott
     - https://www.linkedin.com/in/benhurott
     - https://youtube.com/@benhurott
 

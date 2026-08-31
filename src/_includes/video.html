@@ -1,0 +1,29 @@
+{%- comment -%}
+A responsive YouTube embed for use inside a post body:
+
+  {% include video.html id="z0_nuioScFY" title="AI-Native SDLC: e agora AppSec?" %}
+
+Takes `include.id` (the `v=` value from the watch URL, not the whole URL) and
+`include.title`. The title is not decoration — it becomes the iframe's
+accessible name, and an iframe without one is announced to a screen reader as
+nothing more useful than "frame".
+
+Two choices worth keeping:
+
+  * youtube-nocookie.com, so a reader who scrolls past without pressing play is
+    not handed an ad-profiling cookie by a page they only read.
+  * loading="lazy", because the player pulls several hundred KB of script. Below
+    the fold it costs nothing until the reader gets there.
+
+The aspect ratio and the chalk frame live in .video-embed (assets/main.scss);
+nothing here sets width or height, so the box follows the column on a phone.
+{%- endcomment -%}
+<div class="video-embed">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/{{ include.id | uri_escape }}"
+    title="{{ include.title | escape }}"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+</div>
